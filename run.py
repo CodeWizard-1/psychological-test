@@ -26,15 +26,14 @@ def info():
     """
     
     print("""\n Welcome to psychological testing. By passing the temperament test,
-    you will be able to better know your own Self. You will understand what
-    your character is like and will be able to take a more correct position in life.
-    Knowing the temperament of your loved ones and friends will help you get along comfortably
-    in the family and in the work team.\n""")
+you will be able to better know your own Self. You will understand what
+your character is like and will be able to take a more correct position in life.
+Knowing the temperament of your loved ones and friends will help you get along comfortably
+in the family and in the work team.\n""")
     while True:
         data_name = input("Enter your name: ")
 
         if validate_data(data_name):
-            print("Data is valid")
             break
     
 
@@ -51,14 +50,30 @@ def validate_data(values):
         print(f"Invalid data: {e}, try again.\n")
         return False
     
-        print("\nInstructions:\n")
+    print("\nInstructions:\n")
 
-        print(f"""  {values}, you are asked to answer 57 questions. The questions are aimed at identifying 
-    your usual way of behavior. Try to imagine typical situations and give the first “natural” 
-    answer that comes to mind. If you agree with the statement, indicate 'yes', if not, indicate 'no'.\n""")
+    print(f"""  {values}, you are asked to answer 57 questions. The questions are aimed at identifying 
+your usual way of behavior. Try to imagine typical situations and give the first “natural” 
+answer that comes to mind. If you agree with the statement, indicate 'yes', if not, indicate 'no'.\n""")
         
     return True   
 
 
 
-info()   
+table_access = SHEET.worksheet('questions')
+questions = table_access.col_values(2)
+
+for idx, question in enumerate (questions, start = 1):
+    answer = input(f"\nQuestion № {idx} : {question}(Enter 'yes' or 'no')")
+    while answer.lower() not in ('yes','no'):
+        answer = input("\nPlease, enter 'yes' or 'no'")
+print("\nThanks for the answers, no more questions\n")
+
+
+
+
+
+start_block = info()
+ 
+
+ 
