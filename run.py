@@ -28,9 +28,31 @@ you will be able to better know your own Self. You will understand what
 your character is like and will be able to take a more correct position in life.
 Knowing the temperament of your loved ones and friends will help you get along comfortably
 in the family and in the work team.\n""")
+
     print("Instructions:\n")
-    print("""  You are asked to answer 57 questions. The questions are aimed at identifying your usual way of behavior. 
-Try to imagine typical situations and give the first “natural” answer that comes to mind. If you agree with the statement, 
-indicate 'yes', if not, indicate 'no'.\n""")
+
+    print("""  You are asked to answer 57 questions. The questions are aimed at identifying 
+your usual way of behavior. Try to imagine typical situations and give the first “natural” 
+answer that comes to mind. If you agree with the statement, indicate 'yes', if not, indicate 'no'.\n""")
+
+    data_name = input("Enter your name: ")
+    validate_data(data_name)
+    
+def validate_data(values):
+    """
+    This function checks the correctness of the data entered by the user
+    """
+    try:
+        if len(values) > 10:
+            raise ValueError(
+                f"the length of your name should not exceed 10 characters. You entered: {len(values)}characters"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, try again.\n")
+
+    print(values)
+
+
+
 
 info()   
