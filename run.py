@@ -60,20 +60,49 @@ answer that comes to mind. If you agree with the statement, indicate 'yes', if n
 
 
 
+start_block = info()
+ 
 table_access = SHEET.worksheet('questions')
 questions = table_access.col_values(2)
+
+target_question_extra_intro_yes = [1, 3, 8, 10, 13, 17, 22, 25, 27, 39, 44, 46, 49, 53, 56]
+target_question_extra_intro_no = [5, 15, 20, 29, 32, 34, 37, 41, 51]
+target_question_neuroticism_yes = [2, 4, 7, 9, 11, 14, 16, 19, 21, 23, 26, 28, 31, 33, 35, 38, 40, 43, 45, 47, 50, 52, 55, 57]
+target_question_scale_lies_yes = [6, 24, 36]
+target_question_scale_lies_no = [12, 18, 30, 42, 48, 54]
+
+resalts_extra_intro = 0
+resalts_neuroticism = 0
+resalts_scale_lies = 0
+
 
 for idx, question in enumerate (questions, start = 1):
     answer = input(f"\nQuestion № {idx} : {question}(Enter 'yes' or 'no')")
     while answer.lower() not in ('yes','no'):
         answer = input("\nPlease, enter 'yes' or 'no'")
+    if idx in target_question_extra_intro_yes and answer.lower() == 'yes':
+        resalts_extra_intro += 1
+    if idx in target_question_extra_intro_no and answer.lower() == 'no':
+        resalts_extra_intro += 1
+    if idx in target_question_neuroticism_yes and answer.lower() == 'yes':
+        resalts_neuroticism += 1
+    if idx in target_question_scale_lies_yes and answer.lower() == 'yes':
+        resalts_scale_lies += 1
+    if idx in target_question_scale_lies_no and answer.lower() == 'no':
+        resalts_scale_lies += 1
+
+
+
 print("\nThanks for the answers, no more questions\n")
-
-
-
-
-
-start_block = info()
+print(f"You have scored {resalts_extra_intro} points\n")
+print(f"You have scored {resalts_neuroticism} points\n")
+print(f"You have scored {resalts_scale_lies} points\n")
  
-
- 
+if resalts_extra_intro <= 12 and resalts_neuroticism <= 12:
+    print(f"Your predominant temperament type is Phlegmatic")
+elif resalts_extra_intro <= 12 and resalts_neuroticism > 12:
+    print(f"Your predominant temperament type is Melancholic")
+elif resalts_extra_intro >= 12 and resalts_neuroticism <= 12:
+    print(f"Your predominant temperament type is Sanguine")
+elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
+    print(f"Your predominant temperament type is Choleric")
