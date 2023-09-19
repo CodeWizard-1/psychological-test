@@ -33,7 +33,7 @@ Knowing the temperament of your loved ones and friends will help you get along c
 in the family and in the work team.\n""")
     while True:
         global data_name
-        data_name = input("Enter your name: ")
+        data_name = input("Enter your name:\n")
        
 
         if validate_data(data_name):
