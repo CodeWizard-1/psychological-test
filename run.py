@@ -26,11 +26,7 @@ def info():
     testing and instructions for taking the test
     """
     
-    print("""\n Welcome to psychological testing. By passing the temperament test,
-you will be able to better know your own Self. You will understand what
-your character is like and will be able to take a more correct position in life.
-Knowing the temperament of your loved ones and friends will help you get along comfortably
-in the family and in the work team.\n""")
+    print("\n Welcome to psychological testing. By passing the temperament test, you will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n")
     while True:
         global data_name
         data_name = input("Enter your name:\n")
@@ -54,10 +50,7 @@ def validate_data(values):
         return False
     
     print("\nInstructions:\n")
-
-    print(f"""  {values}, you are asked to answer 57 questions. The questions are aimed at identifying 
-your usual way of behavior. Try to imagine typical situations and give the first “natural” 
-answer that comes to mind. If you agree with the statement, indicate 'Yes', if not, indicate 'No'.\n""")
+    print(f"""  {values}, you are asked to answer 57 questions. The questions are aimed at identifying your usual way of behavior. Try to imagine typical situations and give the first “natural” answer that comes to mind. If you agree with the statement, indicate 'Yes', if not, indicate 'No'.\n""")
         
     return True   
 
@@ -124,10 +117,6 @@ print(f"You have scored {resalts_scale_lies} points\n")
 
 if resalts_scale_lies >= 4:
     print(f"{data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable")
-
-
-
-
 
 
 result_data = [
