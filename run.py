@@ -127,8 +127,8 @@ if resalts_extra_intro <= 12:
 
 
 if resalts_scale_lies >= 4:
-    print(f"Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.\n")
-
+    massage = f"""<span style='color: red;'>Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.</span>\n"""
+    print(massage)
 
 result_data = [
     ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
