@@ -111,14 +111,14 @@ elif temperament_type == 'Sanguine':
 elif temperament_type == 'Choleric':   
     print(f"  Choleric (an unbalanced, strong type of temperament) is energetic, his actions are characterized by discontinuity. They can be harsh and emotional. Due to excessive enthusiasm for any business, they act too diligently, as a result of which they are quickly exhausted and tired. At its worst, the choleric becomes irritable and unable to control himself.\n")
 
-print(f"You have scored {resalts_extra_intro} points\n")
-print(f"You have scored {resalts_neuroticism} points\n")
-print(f"You have scored {resalts_scale_lies} points\n")
+# print(f"You have scored {resalts_extra_intro} points\n")
+# print(f"You have scored {resalts_neuroticism} points\n")
+# print(f"You have scored {resalts_scale_lies} points\n")
 
 if resalts_extra_intro > 12:
-    print(f"Your are extrovert")
+    print(f"The results also showed that you are an extroverted personality type. This characterizes you as friendly, talkative and energetic.\n")
 if resalts_extra_intro <= 12:
-    print(f"Your are introvert")
+    print(f"The results also showed that you are an introverted personality type. This manifests itself in more withdrawn and solitary behavior.\n")
 # if resalts_neuroticism > 12:
 #     print(f"Your are ...")
 # if resalts_neuroticism <= 12:
@@ -127,7 +127,7 @@ if resalts_extra_intro <= 12:
 
 
 if resalts_scale_lies >= 4:
-    print(f"{data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable")
+    print(f"Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.\n")
 
 
 result_data = [
