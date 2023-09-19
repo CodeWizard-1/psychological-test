@@ -23,7 +23,6 @@ RESET = '\033[0m'
 
 # print(data)
 art = """
-
                         MMO'   cXMMMMMMWd.     oNMMMMMMNc   .OMM
                         MMK,   .OMMMMMMMk.    .kMMMMMMMO.   '0MM
                         MMK,   .dWMMMMMMk.    .kMMMMMMMx.   '0MM
