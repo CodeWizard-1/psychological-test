@@ -22,6 +22,25 @@ RESET = '\033[0m'
 # data = questions.get_all_values()
 
 # print(data)
+art = """
+do,  .lKMMMNklc;.      .;clkNMMMXl.  ,lo
+MMO'   cXMMMMMMWd.     oNMMMMMMNc   .OMM
+MMK,   .OMMMMMMMk.    .kMMMMMMMO.   '0MM
+MMK,   .dWMMMMMMk.    .kMMMMMMMx.   '0MM
+MMK,    oWMMMMMMk.    .kMMMMMMWo    '0MM
+MMK,    lWMMMMMMk.    .kMMMMMMWo    ,0MM
+MMNc    lNMMMMMMk.    .kMMMMMMWl    :XMM
+MMMk.   :XMMMMMMk.    .kMMMMMMNc   .kWMM
+MMMWd.  .kWMMMMMk.    .kMMMMMWO.  .dNMMM
+MMMMWO;. .o0NMMMO.    .kMMMWKd. .;kWMMMM
+MMMMMMN0dc::lood:.     :dool::cd0NMMMMMM
+MMMMMMMMMMWNX0Oxc.     :xO0KNWMMMMMMMMMM
+MMMMMMMMMMMMMMMMk.    .kMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMk.    .kMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMx.    .xMMMMMMMMMMMMMMMM
+"""
+
+print(art)
 
 
 def info():
