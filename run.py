@@ -12,6 +12,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('psychological_test')
 
+
 # questions = SHEET.worksheet('questions')
 
 # data = questions.get_all_values()
@@ -31,7 +32,9 @@ your character is like and will be able to take a more correct position in life.
 Knowing the temperament of your loved ones and friends will help you get along comfortably
 in the family and in the work team.\n""")
     while True:
+        global data_name
         data_name = input("Enter your name: ")
+       
 
         if validate_data(data_name):
             break
@@ -54,7 +57,7 @@ def validate_data(values):
 
     print(f"""  {values}, you are asked to answer 57 questions. The questions are aimed at identifying 
 your usual way of behavior. Try to imagine typical situations and give the first “natural” 
-answer that comes to mind. If you agree with the statement, indicate 'yes', if not, indicate 'no'.\n""")
+answer that comes to mind. If you agree with the statement, indicate 'Yes', if not, indicate 'No'.\n""")
         
     return True   
 
@@ -77,18 +80,18 @@ resalts_scale_lies = 0
 
 
 for idx, question in enumerate (questions, start = 1):
-    answer = input(f"\nQuestion № {idx} : {question}(Enter 'yes' or 'no')")
-    while answer.lower() not in ('yes','no'):
-        answer = input("\nPlease, enter 'yes' or 'no'")
-    if idx in target_question_extra_intro_yes and answer.lower() == 'yes':
+    answer = input(f"\nQuestion № {idx} : {question}(Enter 'Y' or 'N')")
+    while answer.lower() not in ('y','n'):
+        answer = input("\nPlease, enter 'Y or 'N'")
+    if idx in target_question_extra_intro_yes and answer.lower() == 'y':
         resalts_extra_intro += 1
-    if idx in target_question_extra_intro_no and answer.lower() == 'no':
+    if idx in target_question_extra_intro_no and answer.lower() == 'n':
         resalts_extra_intro += 1
-    if idx in target_question_neuroticism_yes and answer.lower() == 'yes':
+    if idx in target_question_neuroticism_yes and answer.lower() == 'y':
         resalts_neuroticism += 1
-    if idx in target_question_scale_lies_yes and answer.lower() == 'yes':
+    if idx in target_question_scale_lies_yes and answer.lower() == 'y':
         resalts_scale_lies += 1
-    if idx in target_question_scale_lies_no and answer.lower() == 'no':
+    if idx in target_question_scale_lies_no and answer.lower() == 'n':
         resalts_scale_lies += 1
 
 
@@ -99,10 +102,17 @@ print(f"You have scored {resalts_neuroticism} points\n")
 print(f"You have scored {resalts_scale_lies} points\n")
  
 if resalts_extra_intro <= 12 and resalts_neuroticism <= 12:
-    print(f"Your predominant temperament type is Phlegmatic")
+    print(f"Your predominant temperament type is Phlegmatic\n")
 elif resalts_extra_intro <= 12 and resalts_neuroticism > 12:
-    print(f"Your predominant temperament type is Melancholic")
+    print(f"Your predominant temperament type is Melancholic\n")
 elif resalts_extra_intro >= 12 and resalts_neuroticism <= 12:
-    print(f"Your predominant temperament type is Sanguine")
+    print(f"Your predominant temperament type is Sanguine\n")
 elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
-    print(f"Your predominant temperament type is Choleric")
+    print(f"Your predominant temperament type is Choleric\n")
+
+result_data = [
+    ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
+    [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, ""]
+]
+worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
+worksheet.insert_rows(result_data, 2) 
