@@ -59,7 +59,7 @@ def validate_data(values):
 start_block = info()
  
 table_access = SHEET.worksheet('questions')
-questions = table_access.col_values(3)
+questions = table_access.col_values(2)
 
 target_question_extra_intro_yes = [1, 3, 8, 10, 13, 17, 22, 25, 27, 39, 44, 46, 49, 53, 56]
 target_question_extra_intro_no = [5, 15, 20, 29, 32, 34, 37, 41, 51]
@@ -114,6 +114,17 @@ elif temperament_type == 'Choleric':
 print(f"You have scored {resalts_extra_intro} points\n")
 print(f"You have scored {resalts_neuroticism} points\n")
 print(f"You have scored {resalts_scale_lies} points\n")
+
+if resalts_extra_intro > 12:
+    print(f"Your are extrovert")
+if resalts_extra_intro <= 12:
+    print(f"Your are introvert")
+# if resalts_neuroticism > 12:
+#     print(f"Your are ...")
+# if resalts_neuroticism <= 12:
+#     print(f"Your are ...")
+
+
 
 if resalts_scale_lies >= 4:
     print(f"{data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable")
