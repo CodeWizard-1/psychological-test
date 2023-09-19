@@ -1,4 +1,5 @@
 import gspread
+import time
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -17,44 +18,16 @@ BLUE = '\033[94m'
 GREEN = '\033[92m'
 RESET = '\033[0m'
 
-# questions = SHEET.worksheet('questions')
-
-# data = questions.get_all_values()
-
-# print(data)
-art = """
-                        MMO'   cXMMMMMMWd.     oNMMMMMMNc   .OMM
-                        MMK,   .OMMMMMMMk.    .kMMMMMMMO.   '0MM
-                        MMK,   .dWMMMMMMk.    .kMMMMMMMx.   '0MM
-                        MMK,    oWMMMMMMk.    .kMMMMMMWo    '0MM
-                        MMK,    lWMMMMMMk.    .kMMMMMMWo    ,0MM
-                        MMNc    lNMMMMMMk.    .kMMMMMMWl    :XMM
-                        MMMk.   :XMMMMMMk.    .kMMMMMMNc   .kWMM
-                        MMMWd.  .kWMMMMMk.    .kMMMMMWO.  .dNMMM
-                        MMMMWO;. .o0NMMMO.    .kMMMWKd. .;kWMMMM
-                        MMMMMMN0dc::lood:.     :dool::cd0NMMMMMM
-                        MMMMMMMMMMWNX0Oxc.     :xO0KNWMMMMMMMMMM
-                        MMMMMMMMMMMMMMMMk.    .kMMMMMMMMMMMMMMMM
-                        MMMMMMMMMMMMMMMMk.    .kMMMMMMMMMMMMMMMM
-"""
-
-# Разделяем рисунок на строки и находим максимальную длину строки
-lines = art.strip().split('\n')
-max_len = max(len(line) for line in lines)
-
-# Центрируем каждую строку и объединяем их обратно в одну строку
-centered_art = '\n'.join(line.center(max_len) for line in lines)
-
-print(centered_art)
-
 
 def info():
     """
     Information about the purpose of psychological 
     testing and instructions for taking the test
     """
-    
-    print("\n Welcome to psychological testing. By passing the temperament test, you will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n")
+    welcome_text = "\n Welcome to psychological testing. By passing the temperament test, you will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n"
+    for letter in welcome_text:
+        print(letter, end='',flush=True)
+        time.sleep(0.05)
     while True:
         global data_name
         data_name = input("Enter your name:\n")
@@ -139,18 +112,10 @@ elif temperament_type == 'Sanguine':
 elif temperament_type == 'Choleric':   
     print(f"  Choleric (an unbalanced, strong type of temperament) is energetic, his actions are characterized by discontinuity. They can be harsh and emotional. Due to excessive enthusiasm for any business, they act too diligently, as a result of which they are quickly exhausted and tired. At its worst, the choleric becomes irritable and unable to control himself.\n")
 
-# print(f"You have scored {resalts_extra_intro} points\n")
-# print(f"You have scored {resalts_neuroticism} points\n")
-# print(f"You have scored {resalts_scale_lies} points\n")
-
 if resalts_extra_intro > 12:
     print(f"The results also showed that you are an extroverted personality type. This characterizes you as friendly, talkative and energetic.\n")
 if resalts_extra_intro <= 12:
     print(f"The results also showed that you are an introverted personality type. This manifests itself in more withdrawn and solitary behavior.\n")
-# if resalts_neuroticism > 12:
-#     print(f"Your are ...")
-# if resalts_neuroticism <= 12:
-#     print(f"Your are ...")
 
 
 
