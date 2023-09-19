@@ -66,7 +66,7 @@ answer that comes to mind. If you agree with the statement, indicate 'Yes', if n
 start_block = info()
  
 table_access = SHEET.worksheet('questions')
-questions = table_access.col_values(2)
+questions = table_access.col_values(3)
 
 target_question_extra_intro_yes = [1, 3, 8, 10, 13, 17, 22, 25, 27, 39, 44, 46, 49, 53, 56]
 target_question_extra_intro_no = [5, 15, 20, 29, 32, 34, 37, 41, 51]
@@ -97,22 +97,28 @@ for idx, question in enumerate (questions, start = 1):
 
 
 print("\nThanks for the answers, no more questions\n")
+ 
+if resalts_extra_intro <= 12 and resalts_neuroticism <= 12:
+    temperament_type = 'Phlegmatic'
+elif resalts_extra_intro <= 12 and resalts_neuroticism > 12:
+    temperament_type = 'Melancholic'
+elif resalts_extra_intro >= 12 and resalts_neuroticism <= 12:
+    temperament_type = 'Sanguine'
+elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
+    temperament_type = 'Choleric'
+
+print(f"Your predominant temperament type is  {temperament_type }\n")
+
+
 print(f"You have scored {resalts_extra_intro} points\n")
 print(f"You have scored {resalts_neuroticism} points\n")
 print(f"You have scored {resalts_scale_lies} points\n")
- 
-if resalts_extra_intro <= 12 and resalts_neuroticism <= 12:
-    print(f"Your predominant temperament type is Phlegmatic\n")
-elif resalts_extra_intro <= 12 and resalts_neuroticism > 12:
-    print(f"Your predominant temperament type is Melancholic\n")
-elif resalts_extra_intro >= 12 and resalts_neuroticism <= 12:
-    print(f"Your predominant temperament type is Sanguine\n")
-elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
-    print(f"Your predominant temperament type is Choleric\n")
+
+
 
 result_data = [
     ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
-    [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, ""]
+    [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type]
 ]
 worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
 worksheet.insert_rows(result_data, 2) 
