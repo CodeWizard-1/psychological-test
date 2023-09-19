@@ -23,24 +23,30 @@ RESET = '\033[0m'
 
 # print(data)
 art = """
-do,  .lKMMMNklc;.      .;clkNMMMXl.  ,lo
-MMO'   cXMMMMMMWd.     oNMMMMMMNc   .OMM
-MMK,   .OMMMMMMMk.    .kMMMMMMMO.   '0MM
-MMK,   .dWMMMMMMk.    .kMMMMMMMx.   '0MM
-MMK,    oWMMMMMMk.    .kMMMMMMWo    '0MM
-MMK,    lWMMMMMMk.    .kMMMMMMWo    ,0MM
-MMNc    lNMMMMMMk.    .kMMMMMMWl    :XMM
-MMMk.   :XMMMMMMk.    .kMMMMMMNc   .kWMM
-MMMWd.  .kWMMMMMk.    .kMMMMMWO.  .dNMMM
-MMMMWO;. .o0NMMMO.    .kMMMWKd. .;kWMMMM
-MMMMMMN0dc::lood:.     :dool::cd0NMMMMMM
-MMMMMMMMMMWNX0Oxc.     :xO0KNWMMMMMMMMMM
-MMMMMMMMMMMMMMMMk.    .kMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMk.    .kMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMx.    .xMMMMMMMMMMMMMMMM
+
+                        MMO'   cXMMMMMMWd.     oNMMMMMMNc   .OMM
+                        MMK,   .OMMMMMMMk.    .kMMMMMMMO.   '0MM
+                        MMK,   .dWMMMMMMk.    .kMMMMMMMx.   '0MM
+                        MMK,    oWMMMMMMk.    .kMMMMMMWo    '0MM
+                        MMK,    lWMMMMMMk.    .kMMMMMMWo    ,0MM
+                        MMNc    lNMMMMMMk.    .kMMMMMMWl    :XMM
+                        MMMk.   :XMMMMMMk.    .kMMMMMMNc   .kWMM
+                        MMMWd.  .kWMMMMMk.    .kMMMMMWO.  .dNMMM
+                        MMMMWO;. .o0NMMMO.    .kMMMWKd. .;kWMMMM
+                        MMMMMMN0dc::lood:.     :dool::cd0NMMMMMM
+                        MMMMMMMMMMWNX0Oxc.     :xO0KNWMMMMMMMMMM
+                        MMMMMMMMMMMMMMMMk.    .kMMMMMMMMMMMMMMMM
+                        MMMMMMMMMMMMMMMMk.    .kMMMMMMMMMMMMMMMM
 """
 
-print(art)
+# Разделяем рисунок на строки и находим максимальную длину строки
+lines = art.strip().split('\n')
+max_len = max(len(line) for line in lines)
+
+# Центрируем каждую строку и объединяем их обратно в одну строку
+centered_art = '\n'.join(line.center(max_len) for line in lines)
+
+print(centered_art)
 
 
 def info():
