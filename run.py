@@ -125,7 +125,7 @@ for idx, question in enumerate (questions, start = 1):
 
 
 
-print(f"\n{BLUE}Thanks for the answers, no more questions{RESET}\n")
+# print(f"\n{BLUE}Thanks for the answers, no more questions{RESET}\n")
  
 if resalts_extra_intro <= 12 and resalts_neuroticism <= 12:
     temperament_type = 'Phlegmatic'
@@ -160,6 +160,8 @@ if resalts_scale_lies >= 4:
     description_scale_lies = f"{RED}Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
     sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
     print(description_scale_lies)
+else:
+    sign_profile = "The subject was honest and the test results are reliable
 
 final_massage = f"{GREEN}{data_name},{RESET} {YELLOW}thanks for the answers, testing is completed!{RESET}"
 for letter in final_massage:
