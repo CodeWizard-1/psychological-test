@@ -13,10 +13,14 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('psychological_test')
 
+
 RED = '\033[91m'
 BLUE = '\033[94m'
 GREEN = '\033[92m'
+YELLOW = '\033[93m'
 RESET = '\033[0m'
+
+
 art = """
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠈⠻⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⠟⠁⠀⠀⠀⠀⠀ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⠀⠀⠀⠀⢸⣿⣿⣿⣷⣄⠀⠀⠀⠀⣠⣾⣿⣿⣿⡇⠀⠀⠀⠀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -50,10 +54,18 @@ def info():
     for letter in welcome_text:
         print(letter, end='',flush=True)
         time.sleep(0.05)
+    
+    existing_sheets = [worksheet.title for worksheet in SHEET.worksheets()]
+
     while True:
         global data_name
         data_name = input(f"{BLUE}\nEnter your name:{RESET}\n")
-       
+        
+        if data_name not in existing_sheets:
+            break
+        else:
+            print(f"A user named '{data_name}' already exists in the database. Please choose a different name.")
+            continue
 
         if validate_data(data_name):
             break
@@ -150,4 +162,6 @@ result_data = [
     [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type]
 ]
 worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
-worksheet.insert_rows(result_data, 2) 
+worksheet.insert_rows(result_data, 2)
+
+finish_massage = f"{GREEN}{data_name}{RESET}, {YELLOW}thanks for the answers, testing is completed!{RESET}"
