@@ -68,8 +68,6 @@ def info():
             print(f"\n{RED}A user named '{data_name}' already exists in the database. Please choose a different name.{RESET}")
             continue
 
-        # if validate_data(data_name):
-        #     break
     
 
 def validate_data(values):
@@ -95,7 +93,7 @@ def validate_data(values):
 start_block = info()
  
 table_access = SHEET.worksheet('questions')
-questions = table_access.col_values(2)
+questions = table_access.col_values(3)
 
 target_question_extra_intro_yes = [1, 3, 8, 10, 13, 17, 22, 25, 27, 39, 44, 46, 49, 53, 56]
 target_question_extra_intro_no = [5, 15, 20, 29, 32, 34, 37, 41, 51]
@@ -123,9 +121,6 @@ for idx, question in enumerate (questions, start = 1):
     if idx in target_question_scale_lies_no and answer.lower() == 'n':
         resalts_scale_lies += 1
 
-
-
-# print(f"\n{BLUE}Thanks for the answers, no more questions{RESET}\n")
  
 if resalts_extra_intro <= 12 and resalts_neuroticism <= 12:
     temperament_type = 'Phlegmatic'
@@ -136,7 +131,7 @@ elif resalts_extra_intro >= 12 and resalts_neuroticism <= 12:
 elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
     temperament_type = 'Choleric'
 
-print(f"Your predominant temperament type is{GREEN} {temperament_type}{RESET}\n")
+print(f"\nYour predominant temperament type is{GREEN} {temperament_type}{RESET}\n")
 
 if temperament_type == 'Melancholic':
     description_temperament_type =f"{GREEN}  Melancholic (weak, unbalanced) {RESET}- the owner of a slightly inhibited reaction. Usually these are indecisive, closed people, prone to deep feelings. They can easily and steadfastly solve life's problems. On the negative side, a melancholic can be fearful, squeamish, concentrating on minor events and getting upset because of them.\n"
@@ -149,14 +144,29 @@ elif temperament_type == 'Choleric':
 
 print(description_temperament_type)
 
+
+
 if resalts_extra_intro > 12:
     description_extra_intro = f"The results also showed that you are an extroverted personality type. This characterizes you as friendly, talkative and energetic.\n"
 if resalts_extra_intro <= 12:
     description_extra_intro = f"The results also showed that you are an introverted personality type. This manifests itself in more withdrawn and solitary behavior.\n"
+
 print(description_extra_intro)
 
 
-if resalts_scale_lies >= 4:
+if resalts_neuroticism <= 7:
+    description_resalts_neuroticism = f"\nYou are characterized by maturity, excellent adaptation, lack of great tension, anxiety, as well as a tendency towards leadership and communication skills.\n"
+if 7 < resalts_neuroticism <= 13:
+    description_resalts_neuroticism = f"\nYou are characterized by emotional stability, prudence and restraint.\n"
+if 14 < resalts_neuroticism <= 18:
+    description_resalts_neuroticism = f"\nYou are characterized by emotionality, impulsiveness, and changeable interests.\n"
+if resalts_neuroticism > 18:
+    description_resalts_neuroticism = f"\nYou are characterized by nervousness, instability, poor adaptation, a tendency to rapid mood swings, feelings of guilt and anxiety, depressive reactions, absent-mindedness, and instability in stressful situations.\n"
+
+print(description_resalts_neuroticism)
+
+
+if resalts_scale_lies >= 5:
     description_scale_lies = f"{RED}Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
     sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
     print(description_scale_lies)
@@ -171,7 +181,7 @@ for letter in final_massage:
 result_data = [
     ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
     [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type],
-    ["", description_extra_intro,"",sign_profile,description_temperament_type]
+    ["", description_extra_intro, description_resalts_neuroticism, sign_profile,description_temperament_type]
 ]
 worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
 worksheet.insert_rows(result_data, 2)
