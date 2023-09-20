@@ -35,7 +35,10 @@ art = """
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
 """
-print(art)
+for sign in art:
+        print(sign, end='',flush=True)
+        time.sleep(0.005)
+
 
 
 def info():
@@ -93,7 +96,7 @@ resalts_scale_lies = 0
 
 
 for idx, question in enumerate (questions, start = 1):
-    answer = input(f"\n{BLUE}Question № {idx}{RESET} : {question} ({GREEN}Enter 'Y' or 'N'){RESET}")
+    answer = input(f"\n{BLUE}Question № {idx}{RESET} : {question} ({GREEN}Y/N){RESET}")
     while answer.lower() not in ('y','n'):
         answer = input(f"\n{RED}Please, enter 'Y or 'N'{RESET}")
     if idx in target_question_extra_intro_yes and answer.lower() == 'y':
