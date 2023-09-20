@@ -155,7 +155,12 @@ if resalts_extra_intro <= 12:
 
 if resalts_scale_lies >= 4:
     print(f"{RED}Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n")
-    
+
+
+final_massage = f"{GREEN}{data_name}{RESET}{YELLOW}, thanks for the answers, testing is completed!{RESET}"
+for letter in final_massage:
+        print(letter, end='',flush=True)
+        time.sleep(0.005)    
 
 result_data = [
     ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
@@ -164,4 +169,3 @@ result_data = [
 worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
 worksheet.insert_rows(result_data, 2)
 
-finish_massage = f"{GREEN}{data_name}{RESET}, {YELLOW}thanks for the answers, testing is completed!{RESET}"
