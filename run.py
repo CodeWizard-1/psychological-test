@@ -155,13 +155,13 @@ print(description_extra_intro)
 
 
 if resalts_neuroticism <= 7:
-    description_resalts_neuroticism = f"\nYou are characterized by maturity, excellent adaptation, lack of great tension, anxiety, as well as a tendency towards leadership and communication skills.\n"
-if 7 < resalts_neuroticism <= 13:
-    description_resalts_neuroticism = f"\nYou are characterized by emotional stability, prudence and restraint.\n"
+    description_resalts_neuroticism = f"You are usually characterized by stable and low-intensity emotional reactions. You rarely experience extreme anxiety, nervousness, or depression and usually cope with stress better.\n"
+if 8 < resalts_neuroticism <= 13:
+    description_resalts_neuroticism = f"You usually have more stable emotional reactions. You may experience stress and anxiety, but not as much or as often as people with higher levels of neuroticism\n"
 if 14 < resalts_neuroticism <= 18:
-    description_resalts_neuroticism = f"\nYou are characterized by emotionality, impulsiveness, and changeable interests.\n"
+    description_resalts_neuroticism = f"\You tend to have emotional fluctuations and reactions to stress. You may experience anxiety, nervousness, and worry more often, but not as intensely as people with very high levels of neuroticism.\n"
 if resalts_neuroticism > 18:
-    description_resalts_neuroticism = f"\nYou are characterized by nervousness, instability, poor adaptation, a tendency to rapid mood swings, feelings of guilt and anxiety, depressive reactions, absent-mindedness, and instability in stressful situations.\n"
+    description_resalts_neuroticism = f"You often experience intense and frequent emotional reactions. You may be prone to excessive anxiety, fears, depression and feelings of restlessness. You can easily fall into states of nervousness and uncertainty.\n"
 
 print(description_resalts_neuroticism)
 
