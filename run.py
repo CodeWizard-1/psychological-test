@@ -62,13 +62,14 @@ def info():
         data_name = input(f"{BLUE}\nEnter your name:{RESET}\n")
         
         if data_name not in existing_sheets:
-            break
+            if validate_data(data_name):
+                 break
         else:
-            print(f"A user named '{data_name}' already exists in the database. Please choose a different name.")
+            print(f"\n{RED}A user named '{data_name}' already exists in the database. Please choose a different name.{RESET}")
             continue
 
-        if validate_data(data_name):
-            break
+        # if validate_data(data_name):
+        #     break
     
 
 def validate_data(values):
@@ -84,7 +85,7 @@ def validate_data(values):
         print(f"{RED}Invalid data: {e} {RED}try again.{RESET}\n")
         return False
     
-    print("\nInstructions:\n")
+    print(f"\n{YELLOW}Instructions:{RESET}\n")
     print(f"""  {GREEN}{values}{RESET}, you are asked to answer 57 questions. The questions are aimed at identifying your usual way of behavior. Try to imagine typical situations and give the first “natural” answer that comes to mind. If you agree with the statement, indicate 'Yes', if not, indicate 'No'.\n""")
         
     return True   
