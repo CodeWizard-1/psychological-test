@@ -161,7 +161,7 @@ if resalts_scale_lies >= 4:
     sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
     print(description_scale_lies)
 else:
-    sign_profile = "The subject was honest and the test results are reliable
+    sign_profile = "The subject was honest and the test results are reliable."
 
 final_massage = f"{GREEN}{data_name},{RESET} {YELLOW}thanks for the answers, testing is completed!{RESET}"
 for letter in final_massage:
