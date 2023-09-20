@@ -139,33 +139,37 @@ elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
 print(f"Your predominant temperament type is{GREEN} {temperament_type}{RESET}\n")
 
 if temperament_type == 'Melancholic':
-    print(f"{GREEN}  Melancholic (weak, unbalanced) {RESET}- the owner of a slightly inhibited reaction. Usually these are indecisive, closed people, prone to deep feelings. They can easily and steadfastly solve life's problems. On the negative side, a melancholic can be fearful, squeamish, concentrating on minor events and getting upset because of them.\n")
+    description_temperament_type =f"{GREEN}  Melancholic (weak, unbalanced) {RESET}- the owner of a slightly inhibited reaction. Usually these are indecisive, closed people, prone to deep feelings. They can easily and steadfastly solve life's problems. On the negative side, a melancholic can be fearful, squeamish, concentrating on minor events and getting upset because of them.\n"
 elif temperament_type == 'Phlegmatic':
-    print(f"{GREEN}  Phlegmatic (strong, inert) {RESET}has a low level of activity. He is calm, prudent, able to bring the work he has begun to the end. As a rule, he treats his forces economically and does not waste them on unnecessary activities or on those that he considers so. Negative manifestations: lethargy, apathy, lack of will, weakly expressed emotional indicators. Others may seem boring and callous.\n")
+    description_temperament_type = f"{GREEN}  Phlegmatic (strong, inert) {RESET}has a low level of activity. He is calm, prudent, able to bring the work he has begun to the end. As a rule, he treats his forces economically and does not waste them on unnecessary activities or on those that he considers so. Negative manifestations: lethargy, apathy, lack of will, weakly expressed emotional indicators. Others may seem boring and callous.\n"
 elif temperament_type == 'Sanguine':
-    print(f"{GREEN}  Sanguine{RESET} - the person is sociable, cheerful, easily makes new acquaintances. Such people are also called the soul of the company. His feelings are unstable, and preferences often change. He is characterized by expressive gestures and facial expressions. He constantly needs vivid impressions. In rare cases, he plans his day, spontaneity haunts the sanguine throughout his life in almost all areas. According to the main properties of the central nervous system, it has a strong and balanced character.\n")
+    description_temperament_type = f"{GREEN}  Sanguine{RESET} - the person is sociable, cheerful, easily makes new acquaintances. Such people are also called the soul of the company. His feelings are unstable, and preferences often change. He is characterized by expressive gestures and facial expressions. He constantly needs vivid impressions. In rare cases, he plans his day, spontaneity haunts the sanguine throughout his life in almost all areas. According to the main properties of the central nervous system, it has a strong and balanced character.\n"
 elif temperament_type == 'Choleric':   
-    print(f"{GREEN}  Choleric (an unbalanced, strong type of temperament){RESET} is energetic, his actions are characterized by discontinuity. They can be harsh and emotional. Due to excessive enthusiasm for any business, they act too diligently, as a result of which they are quickly exhausted and tired. At its worst, the choleric becomes irritable and unable to control himself.\n")
+    description_temperament_type = f"{GREEN}  Choleric (an unbalanced, strong type of temperament){RESET} is energetic, his actions are characterized by discontinuity. They can be harsh and emotional. Due to excessive enthusiasm for any business, they act too diligently, as a result of which they are quickly exhausted and tired. At its worst, the choleric becomes irritable and unable to control himself.\n"
+
+print(description_temperament_type)
 
 if resalts_extra_intro > 12:
-    print(f"The results also showed that you are an extroverted personality type. This characterizes you as friendly, talkative and energetic.\n")
+    description_extra_intro = f"The results also showed that you are an extroverted personality type. This characterizes you as friendly, talkative and energetic.\n"
 if resalts_extra_intro <= 12:
-    print(f"The results also showed that you are an introverted personality type. This manifests itself in more withdrawn and solitary behavior.\n")
-
+    description_extra_intro = f"The results also showed that you are an introverted personality type. This manifests itself in more withdrawn and solitary behavior.\n"
+print(description_extra_intro)
 
 
 if resalts_scale_lies >= 4:
-    print(f"{RED}Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n")
+    description_scale_lies = f"{RED}Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
+    sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
+    print(description_scale_lies)
 
-
-final_massage = f"{GREEN}{data_name}{RESET}{YELLOW}, thanks for the answers, testing is completed!{RESET}"
+final_massage = f"{GREEN}{data_name},{RESET} {YELLOW}thanks for the answers, testing is completed!{RESET}"
 for letter in final_massage:
         print(letter, end='',flush=True)
         time.sleep(0.005)    
 
 result_data = [
     ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
-    [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type]
+    [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type],
+    ["", description_extra_intro,"",sign_profile,description_temperament_type]
 ]
 worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
 worksheet.insert_rows(result_data, 2)
