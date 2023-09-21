@@ -1,6 +1,10 @@
+# These are the instructions for importing the libraries
+
 import gspread
 import time
 from google.oauth2.service_account import Credentials
+
+# Setting up credentials for the Google Sheets API using the service key stored in 'creds.json'. The gspread library is used for integration with Google Sheets.
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,12 +18,16 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('psychological_test')
 
 
+# Terminal text style
+
 RED = '\033[91m'
 BLUE = '\033[94m'
 GREEN = '\033[92m'
 YELLOW = '\033[93m'
 RESET = '\033[0m'
 
+
+# This is an ASCII-art representation that is printed to the console at the beginning of your script for decorative purposes
 
 art = """
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠈⠻⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⠟⠁⠀⠀⠀⠀⠀ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -45,6 +53,8 @@ for sign in art:
 
 
 
+
+
 def info():
     """
     Information about the purpose of psychological 
@@ -53,7 +63,7 @@ def info():
     welcome_text = "\n Welcome to psychological testing. By passing the temperament test, you will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n"
     for letter in welcome_text:
         print(letter, end='',flush=True)
-        time.sleep(0.05)
+        time.sleep(0.005)
     
     existing_sheets = [worksheet.title for worksheet in SHEET.worksheets()]
 
@@ -92,8 +102,12 @@ def validate_data(values):
 
 start_block = info()
  
+# Accessing questions from a Google Sheets sheet named 'questions'
+
 table_access = SHEET.worksheet('questions')
-questions = table_access.col_values(3)
+questions = table_access.col_values(2)
+
+# Calculation of points based on user answers.
 
 target_question_extra_intro_yes = [1, 3, 8, 10, 13, 17, 22, 25, 27, 39, 44, 46, 49, 53, 56]
 target_question_extra_intro_no = [5, 15, 20, 29, 32, 34, 37, 41, 51]
@@ -121,6 +135,9 @@ for idx, question in enumerate (questions, start = 1):
     if idx in target_question_scale_lies_no and answer.lower() == 'n':
         resalts_scale_lies += 1
 
+
+# Determination of the predominant type of temperament based on the calculated points.
+
  
 if resalts_extra_intro <= 12 and resalts_neuroticism <= 12:
     temperament_type = 'Phlegmatic'
@@ -132,6 +149,9 @@ elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
     temperament_type = 'Choleric'
 
 print(f"\nYour predominant temperament type is{GREEN} {temperament_type}{RESET}\n")
+
+
+
 
 if temperament_type == 'Melancholic':
     description_temperament_type =f"{GREEN}  Melancholic (weak, unbalanced) {RESET}- the owner of a slightly inhibited reaction. Usually these are indecisive, closed people, prone to deep feelings. They can easily and steadfastly solve life's problems. On the negative side, a melancholic can be fearful, squeamish, concentrating on minor events and getting upset because of them.\n"
@@ -159,7 +179,7 @@ if resalts_neuroticism <= 7:
 if 8 < resalts_neuroticism <= 13:
     description_resalts_neuroticism = f"You usually have more stable emotional reactions. You may experience stress and anxiety, but not as much or as often as people with higher levels of neuroticism\n"
 if 14 < resalts_neuroticism <= 18:
-    description_resalts_neuroticism = f"\You tend to have emotional fluctuations and reactions to stress. You may experience anxiety, nervousness, and worry more often, but not as intensely as people with very high levels of neuroticism.\n"
+    description_resalts_neuroticism = f"You tend to have emotional fluctuations and reactions to stress. You may experience anxiety, nervousness, and worry more often, but not as intensely as people with very high levels of neuroticism.\n"
 if resalts_neuroticism > 18:
     description_resalts_neuroticism = f"You often experience intense and frequent emotional reactions. You may be prone to excessive anxiety, fears, depression and feelings of restlessness. You can easily fall into states of nervousness and uncertainty.\n"
 
