@@ -60,12 +60,7 @@ def info():
     """
     Information about the purpose of psychological testing and instructions for taking the test
     """
-    welcome_text = "\n Welcome to psychological testing. By passing the\
-    temperament test, you will be able to better know your own Self.\
-    You will understand what your character is like and will be able to\
-    take a more correct position in life. Knowing the temperament of your\
-    loved ones and friends will help you get along comfortably in the family\
-    and in the work team.\n"
+    welcome_text = "\n Welcome to psychological testing. By passing the temperament test, you will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n"
 
     for letter in welcome_text:
         print(letter, end='',flush=True)
@@ -81,8 +76,7 @@ def info():
             if validate_data(data_name):
                  break
         else:
-            print(f"\n{RED}A user named '{data_name}' already exists in the \
-            database. Please choose a different name.{RESET}")
+            print(f"\n{RED}A user named '{data_name}' already exists in the database. Please choose a different name.{RESET}")
             continue
 
     
@@ -94,20 +88,15 @@ def validate_data(values):
     try:
         if len(values) < 3 or len(values) > 10:
             raise ValueError(
-                f"{RED}the length of your name should not be less than 3 \
-                characters and not exceed 10 characters. \
-                You entered: {len(values)} characters,{RESET}"
+                f"{RED}the length of your name should not be less than 3 characters and not exceed 10 characters. You entered: {len(values)} characters,{RESET}"
             )
     except ValueError as e:
         print(f"{RED}Invalid data: {e} {RED}try again.{RESET}\n")
         return False
     
     print(f"\n{YELLOW}Instructions:{RESET}\n")
-    print(f"""  {GREEN}{values}{RESET}, you are asked to answer 57 questions. \
-    The questions are aimed at identifying your usual way of behavior. \
-    Try to imagine typical situations and give the first “natural” answer \
-    that comes to mind. If you agree with the statement, \
-    indicate 'Yes', if not, indicate 'No'.\n""")
+    print(f"""  {GREEN}{values}{RESET}, you are asked to answer 57 questions. The questions are aimed at identifying your usual way of behavior. \
+    Try to imagine typical situations and give the first “natural” answer that comes to mind. If you agree with the statement, indicate 'Yes', if not, indicate 'No'.\n""")
         
     return True   
 
@@ -124,11 +113,9 @@ questions = table_access.col_values(2)
 
 # Calculation of points based on user answers
 
-target_question_extra_intro_yes = [1, 3, 8, 10, 13, 17, 22, 25, 27, 39,\
- 44, 46, 49, 53, 56]
+target_question_extra_intro_yes = [1, 3, 8, 10, 13, 17, 22, 25, 27, 39, 44, 46, 49, 53, 56]
 target_question_extra_intro_no = [5, 15, 20, 29, 32, 34, 37, 41, 51]
-target_question_neuroticism_yes = [2, 4, 7, 9, 11, 14, 16, 19, 21, 23, \
-26, 28, 31, 33, 35, 38, 40, 43, 45, 47, 50, 52, 55, 57]
+target_question_neuroticism_yes = [2, 4, 7, 9, 11, 14, 16, 19, 21, 23, 26, 28, 31, 33, 35, 38, 40, 43, 45, 47, 50, 52, 55, 57]
 target_question_scale_lies_yes = [6, 24, 36]
 target_question_scale_lies_no = [12, 18, 30, 42, 48, 54]
 
@@ -174,63 +161,34 @@ print(f"\nYour predominant temperament type is{GREEN} {temperament_type}{RESET}\
 
 
 if temperament_type == 'Melancholic':
-    description_temperament_type =f"{GREEN}  Melancholic (weak, unbalanced) {RESET} \
-    - the owner of a slightly inhibited reaction. Usually these are indecisive, \
-    closed people, prone to deep feelings. They can easily and steadfastly solve \
-    life's problems. On the negative side, a melancholic can be fearful, squeamish, \
-    concentrating on minor events and getting upset because of them.\n"
+    description_temperament_type =f"{GREEN}  Melancholic (weak, unbalanced) {RESET} - the owner of a slightly inhibited reaction. Usually these are indecisive, closed people, prone to deep feelings. They can easily and steadfastly solve life's problems. On the negative side, a melancholic can be fearful, squeamish, concentrating on minor events and getting upset because of them.\n"
 elif temperament_type == 'Phlegmatic':
-    description_temperament_type = f"{GREEN}  Phlegmatic (strong, inert) {RESET}has \
-    a low level of activity. He is calm, prudent, able to bring the work he has begun \
-    to the end. As a rule, he treats his forces economically and does not waste them on\
-     unnecessary activities or on those that he considers so. Negative manifestations: \
-     lethargy, apathy, lack of will, weakly expressed emotional indicators. Others may \
-     seem boring and callous.\n"
+    description_temperament_type = f"{GREEN}  Phlegmatic (strong, inert) {RESET}has a low level of activity. He is calm, prudent, able to bring the work he has begun to the end. As a rule, he treats his forces economically and does not waste them on unnecessary activities or on those that he considers so. Negative manifestations: lethargy, apathy, lack of will, weakly expressed emotional indicators. Others may seem boring and callous.\n"
 elif temperament_type == 'Sanguine':
-    description_temperament_type = f"{GREEN}  Sanguine{RESET} - the person is sociable, \
-    cheerful, easily makes new acquaintances. Such people are also called the soul of \
-    the company. His feelings are unstable, and preferences often change. He is \
-    characterized by expressive gestures and facial expressions. He constantly \
-    needs vivid impressions. In rare cases, he plans his day, spontaneity haunts \
-    the sanguine throughout his life in almost all areas. According to the main \
-    properties of the central nervous system, it has a strong and balanced character.\n"
+    description_temperament_type = f"{GREEN}  Sanguine{RESET} - the person is sociable, cheerful, easily makes new acquaintances. Such people are also called the soul of the company. His feelings are unstable, and preferences often change. He is characterized by expressive gestures and facial expressions. He constantly needs vivid impressions. In rare cases, he plans his day, spontaneity haunts the sanguine throughout his life in almost all areas. According to the main properties of the central nervous system, it has a strong and balanced character.\n"
 elif temperament_type == 'Choleric':   
-    description_temperament_type = f"{GREEN}  Choleric (an unbalanced, strong type of \
-    temperament){RESET} is energetic, his actions are characterized by discontinuity. \
-    They can be harsh and emotional. Due to excessive enthusiasm for any business, \
-    they act too diligently, as a result of which they are quickly exhausted and tired. \
-    At its worst, the choleric becomes irritable and unable to control himself.\n"
+    description_temperament_type = f"{GREEN}  Choleric (an unbalanced, strong type of temperament){RESET} is energetic, his actions are characterized by discontinuity.They can be harsh and emotional. Due to excessive enthusiasm for any business, they act too diligently, as a result of which they are quickly exhausted and tired. At its worst, the choleric becomes irritable and unable to control himself.\n"
 
 print(description_temperament_type)
 
 
 
 if resalts_extra_intro > 12:
-    description_extra_intro = f"The results also showed that you are an extroverted \
-    personality type. This characterizes you as friendly, talkative and energetic.\n"
+    description_extra_intro = f"The results also showed that you are an extroverted personality type. This characterizes you as friendly, talkative and energetic.\n"
 if resalts_extra_intro <= 12:
-    description_extra_intro = f"The results also showed that you are an introverted \
-    personality type. This manifests itself in more withdrawn and solitary behavior.\n"
+    description_extra_intro = f"The results also showed that you are an introverted personality type. This manifests itself in more withdrawn and solitary behavior.\n"
 
 print(description_extra_intro)
 
 
 if resalts_neuroticism <= 7:
-    description_resalts_neuroticism = f"You are usually characterized by stable and \
-    low-intensity emotional reactions. You rarely experience extreme anxiety, nervousness, \
-    or depression and usually cope with stress better.\n"
+    description_resalts_neuroticism = f"You are usually characterized by stable and low-intensity emotional reactions. You rarely experience extreme anxiety, nervousness, or depression and usually cope with stress better.\n"
 if 8 < resalts_neuroticism <= 13:
-    description_resalts_neuroticism = f"You usually have more stable emotional reactions. \
-    You may experience stress and anxiety, but not as much or as often as people with higher \
-    levels of neuroticism\n"
+    description_resalts_neuroticism = f"You usually have more stable emotional reactions. You may experience stress and anxiety, but not as much or as often as people with higher levels of neuroticism\n"
 if 14 < resalts_neuroticism <= 18:
-    description_resalts_neuroticism = f"You tend to have emotional fluctuations and reactions \
-    to stress. You may experience anxiety, nervousness, and worry more often, but not as intensely\
-     as people with very high levels of neuroticism.\n"
+    description_resalts_neuroticism = f"You tend to have emotional fluctuations and reactions to stress. You may experience anxiety, nervousness, and worry more often, but not as intensely as people with very high levels of neuroticism.\n"
 if resalts_neuroticism > 18:
-    description_resalts_neuroticism = f"You often experience intense and frequent emotional reactions. \
-    You may be prone to excessive anxiety, fears, depression and feelings of restlessness. \
-    You can easily fall into states of nervousness and uncertainty.\n"
+    description_resalts_neuroticism = f"You often experience intense and frequent emotional reactions. You may be prone to excessive anxiety, fears, depression and feelings of restlessness. You can easily fall into states of nervousness and uncertainty.\n"
 
 print(description_resalts_neuroticism)
 
@@ -240,9 +198,7 @@ print(description_resalts_neuroticism)
 
 
 if resalts_scale_lies >= 5:
-    description_scale_lies = f"{RED}Important! {data_name}, you answered not as you really are, \
-    but as you would like or as accepted in society. In other words, your answers are not \
-    reliable.{RESET}\n"
+    description_scale_lies = f"{RED}Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
     sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
     print(description_scale_lies)
 else:
@@ -263,8 +219,7 @@ worksheet.insert_rows(result_data, 2)
 # Print a final message to the console to let the user know that 
 # testing is complete
 
-final_massage = f"{GREEN}{data_name},{RESET} {YELLOW}thanks for the answers, testing is \
-completed!{RESET}"
+final_massage = f"{GREEN}{data_name},{RESET} {YELLOW}thanks for the answers, testing is completed!{RESET}"
 for letter in final_massage:
         print(letter, end='',flush=True)
         time.sleep(0.005) 
