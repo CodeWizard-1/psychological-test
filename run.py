@@ -4,7 +4,7 @@ import gspread
 import time
 from google.oauth2.service_account import Credentials
 
-# Setting up credentials for the Google Sheets API using the service key stored in 'creds.json'. The gspread library is used for integration with Google Sheets.
+# Setting up credentials for the Google Sheets API using the service key stored in 'creds.json'. The gspread library is used for integration with Google Sheets
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -53,8 +53,6 @@ for sign in art:
 
 
 
-
-
 def info():
     """
     Information about the purpose of psychological 
@@ -82,7 +80,7 @@ def info():
 
 def validate_data(values):
     """
-    This function checks the correctness of the data entered by the user
+    This function checks that the user has entered their name correctly
     """
     try:
         if len(values) < 3 or len(values) > 10:
@@ -101,13 +99,15 @@ def validate_data(values):
 
 
 start_block = info()
+
  
 # Accessing questions from a Google Sheets sheet named 'questions'
 
 table_access = SHEET.worksheet('questions')
 questions = table_access.col_values(2)
 
-# Calculation of points based on user answers.
+
+# Calculation of points based on user answers
 
 target_question_extra_intro_yes = [1, 3, 8, 10, 13, 17, 22, 25, 27, 39, 44, 46, 49, 53, 56]
 target_question_extra_intro_no = [5, 15, 20, 29, 32, 34, 37, 41, 51]
@@ -136,7 +136,7 @@ for idx, question in enumerate (questions, start = 1):
         resalts_scale_lies += 1
 
 
-# Determination of the predominant type of temperament based on the calculated points.
+# Determination of the predominant type of temperament based on the calculated points
 
  
 if resalts_extra_intro <= 12 and resalts_neuroticism <= 12:
@@ -151,6 +151,7 @@ elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
 print(f"\nYour predominant temperament type is{GREEN} {temperament_type}{RESET}\n")
 
 
+# Description of temperament type, introversion/extroversion and neuroticism based on user scores
 
 
 if temperament_type == 'Melancholic':
@@ -186,17 +187,18 @@ if resalts_neuroticism > 18:
 print(description_resalts_neuroticism)
 
 
+# Checking the user's answers to see if they may not have been honest in their answers
+
+
 if resalts_scale_lies >= 5:
     description_scale_lies = f"{RED}Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
     sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
     print(description_scale_lies)
 else:
     sign_profile = "The subject was honest and the test results are reliable."
+ 
 
-final_massage = f"{GREEN}{data_name},{RESET} {YELLOW}thanks for the answers, testing is completed!{RESET}"
-for letter in final_massage:
-        print(letter, end='',flush=True)
-        time.sleep(0.005)    
+# Create a new sheet with the user's name and add test results to it
 
 result_data = [
     ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
@@ -206,3 +208,10 @@ result_data = [
 worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
 worksheet.insert_rows(result_data, 2)
 
+
+# Print a final message to the console to let the user know that testing is complete
+
+final_massage = f"{GREEN}{data_name},{RESET} {YELLOW}thanks for the answers, testing is completed!{RESET}"
+for letter in final_massage:
+        print(letter, end='',flush=True)
+        time.sleep(0.005) 
