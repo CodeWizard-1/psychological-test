@@ -3,6 +3,7 @@
 import gspread
 import time
 from google.oauth2.service_account import Credentials
+import pprint
 
 # Setting up credentials for the Google Sheets API using the service key
 # stored in 'creds.json'. The gspread library is used for integration with
@@ -97,8 +98,27 @@ def check_previous_score():
             print(" | ".join(row))
     else:
         print(f"\n{RED}No data found for '{data_name}'. Please check the name or take the test first.{RESET}")
+        
+        
+        header, *data = rows
+        max_col_widths = [len(cell) for cell in header]
 
+        for row in data:
+            for i, cell in enumerate(row):
+                max_col_widths[i] = max(max_col_widths[i], len(cell))
 
+        print("\n{GREEN}Your previous test results:{RESET}\n")
+
+        for i, cell in enumerate(header):
+            print(cell.ljust(max_col_widths[i] + 2), end=" | ")
+        print()
+
+        for row in data:
+            for i, cell in enumerate(row):
+                print(cell.ljust(max_col_widths[i] + 2), end=" | ")
+            print()
+        else:
+            print(f"\n{RED}No data found for '{data_name}'. Please check the name or take the test first.{RESET}")
 
 
 def info():
