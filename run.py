@@ -32,7 +32,8 @@ RESET = '\033[0m'
 # This is an ASCII-art representation that is printed to the console
 # at the beginning of your script for decorative purposes
 
-art = """
+#art = 
+"""
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠈⠻⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⠟⠁⠀⠀⠀⠀⠀ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⠀⠀⠀⠀⢸⣿⣿⣿⣷⣄⠀⠀⠀⠀⣠⣾⣿⣿⣿⡇⠀⠀⠀⠀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⢸⣿⣿⣿⣿⣿⠀⠀⠀⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -50,14 +51,21 @@ art = """
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
 """
-for sign in art:
-    print(sign, end='', flush=True)
-    time.sleep(0.005)
+# for sign in art:
+#     print(sign, end='', flush=True)
+#     time.sleep(0.005)
+
+
+
+def main():
+    menu()
+
 
 def menu():
     """
     Display a menu and prompt the user for their choice.
     """
+    data_name = info()
     while True:
         print("\nMenu:")
         print("1. Start the quiz")
@@ -115,7 +123,7 @@ def info():
         
         if data_name not in existing_sheets:
             if validate_data(data_name):
-                 break
+                 return data_name
         else:
             print(f"\n{RED}A user named '{data_name}' already exists in the database. Please choose a different name.{RESET}")
             continue
@@ -245,62 +253,108 @@ def describe_temperament(temperament_type):
 
 
 
-if resalts_extra_intro > 12:
-    description_extra_intro = f"The results also showed that you are an extroverted personality type. This characterizes you as friendly, talkative and energetic.\n"
-if resalts_extra_intro <= 12:
-    description_extra_intro = f"The results also showed that you are an introverted personality type. This manifests itself in more withdrawn and solitary behavior.\n"
-
-print(description_extra_intro)
-
-
-if resalts_neuroticism <= 7:
-    description_resalts_neuroticism = f"You are usually characterized by stable and low-intensity emotional reactions. You rarely experience extreme anxiety, nervousness, or depression and usually cope with stress better.\n"
-if 8 < resalts_neuroticism <= 13:
-    description_resalts_neuroticism = f"You usually have more stable emotional reactions. You may experience stress and anxiety, but not as much or as often as people with higher levels of neuroticism\n"
-if 14 < resalts_neuroticism <= 18:
-    description_resalts_neuroticism = f"You tend to have emotional fluctuations and reactions to stress. You may experience anxiety, nervousness, and worry more often, but not as intensely as people with very high levels of neuroticism.\n"
-if resalts_neuroticism > 18:
-    description_resalts_neuroticism = f"You often experience intense and frequent emotional reactions. You may be prone to excessive anxiety, fears, depression and feelings of restlessness. You can easily fall into states of nervousness and uncertainty.\n"
-
-print(description_resalts_neuroticism)
+def describe_introversion_extroversion(resalts_extra_intro):
+    """
+    Describe introversion or extroversion based on the result.
+    """
+    if resalts_extra_intro > 12:
+        description_extra_intro = (
+            "The results also showed that you are an extroverted personality type. "
+            "This characterizes you as friendly, talkative, and energetic.\n"
+        )
+    else:
+        description_extra_intro = (
+            "The results also showed that you are an introverted personality type. "
+            "This manifests itself in more withdrawn and solitary behavior.\n"
+        )
+    
+    return description_extra_intro
 
 
-# Checking the user's answers to see if they may not have been 
-# honest in their answers
+
+def describe_neuroticism(resalts_neuroticism):
+    """
+    Describe the level of neuroticism based on the result.
+    """
+    if resalts_neuroticism <= 7:
+        description_resalts_neuroticism = (
+            "You are usually characterized by stable and low-intensity emotional reactions. "
+            "You rarely experience extreme anxiety, nervousness, or depression and usually cope with stress better.\n"
+        )
+    elif 8 < resalts_neuroticism <= 13:
+        description_resalts_neuroticism = (
+            "You usually have more stable emotional reactions. You may experience stress and anxiety, "
+            "but not as much or as often as people with higher levels of neuroticism.\n"
+        )
+    elif 14 < resalts_neuroticism <= 18:
+        description_resalts_neuroticism = (
+            "You tend to have emotional fluctuations and reactions to stress. You may experience anxiety, "
+            "nervousness, and worry more often, but not as intensely as people with very high levels of neuroticism.\n"
+        )
+    else:
+        description_resalts_neuroticism = (
+            "You often experience intense and frequent emotional reactions. You may be prone to excessive anxiety, "
+            "fears, depression, and feelings of restlessness. You can easily fall into states of nervousness and uncertainty.\n"
+        )
+    
+    return description_resalts_neuroticism
 
 
-if resalts_scale_lies >= 5:
-    description_scale_lies = f"{RED}Important! {data_name}, you answered not as you really are, but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
-    sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
-    print(description_scale_lies)
-else:
-    sign_profile = "The subject was honest and the test results are reliable."
+
+def check_honesty(resalts_scale_lies):
+    """
+    Check if the user's answers may not have been honest.
+    """
+    if resalts_scale_lies >= 5:
+        description_scale_lies = (
+            f"{RED}Important! {data_name}, you answered not as you really are, "
+            "but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
+        )
+        sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
+    else:
+        description_scale_lies = ""
+        sign_profile = "The subject was honest and the test results are reliable."
+    
+    return description_scale_lies, sign_profile
+
  
 
-# Create a new sheet with the user's name and add test results to it
 
-result_data = [
-    ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
-    [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type],
-    ["", description_extra_intro, description_resalts_neuroticism, sign_profile,description_temperament_type]
-]
-worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
-worksheet.insert_rows(result_data, 2)
-
-
-# Print a final message to the console to let the user know that 
-# testing is complete
-
-final_massage = f"{GREEN}{data_name},{RESET} {YELLOW}thanks for the answers, testing is completed!{RESET}"
-for letter in final_massage:
-        print(letter, end='',flush=True)
-        time.sleep(0.005) 
-
-# if __name__ == "__main__":
-#     # for sign in art:
-#     #     print(sign, end='', flush=True)
-#     #     time.sleep(0.005)
+def save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type):
+    """
+    Create a new sheet with the user's name and add test results to it.
+    """
+    result_data = [
+        ["Name", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points", "Temperament Type"],
+        [data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type],
+        ["", description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type]
+    ]
     
-#     main()
-menu()
-start_block = info()
+    worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
+    worksheet.insert_rows(result_data, 2)
+
+# save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type)
+
+
+def print_final_message(data_name):
+    """
+    Print a final message to the console.
+    """
+    final_message = f"{GREEN}{data_name}, {RESET}{YELLOW}thanks for the answers, testing is completed!{RESET}"
+    for letter in final_message:
+        print(letter, end='', flush=True)
+        time.sleep(0.005)
+    print()
+
+
+if __name__ == "__main__":
+    main()
+    data_name = info() 
+    resalts_extra_intro, resalts_neuroticism, resalts_scale_lies = psychological_test(get_questions())
+    temperament_type = determine_temperament(resalts_extra_intro, resalts_neuroticism)
+    description_extra_intro = describe_introversion_extroversion(resalts_extra_intro)
+    description_resalts_neuroticism = describe_neuroticism(resalts_neuroticism)
+    description_temperament_type = describe_temperament(temperament_type)
+    description_scale_lies, sign_profile = check_honesty(resalts_scale_lies)
+    save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type)
+    print_final_message(data_name)
