@@ -189,12 +189,13 @@ def psychological_test(questions):
     
     
     description_resalts_neuroticism = describe_neuroticism(resalts_neuroticism)
-    determine_temperament(resalts_extra_intro, resalts_neuroticism)
+    temperament_type = determine_temperament(resalts_extra_intro, resalts_neuroticism)
     description_extra_intro = describe_introversion_extroversion(resalts_extra_intro)
     description_scale_lies, sign_profile = check_honesty(resalts_scale_lies)
+    description_temperament_type = describe_temperament(resalts_extra_intro, temperament_type)
     print_final_message(data_name)
-
-    return resalts_extra_intro, resalts_neuroticism, resalts_scale_lies
+    save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type)
+    return resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile
     
 
 def determine_temperament(resalts_extra_intro, resalts_neuroticism):
@@ -210,8 +211,7 @@ def determine_temperament(resalts_extra_intro, resalts_neuroticism):
     elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
         temperament_type = 'Choleric'
     
-    describe_temperament(resalts_extra_intro, temperament_type)
-    print(f"your predominant temperament type is {temperament_type}")
+    print(f"\nYour predominant temperament type is {temperament_type}\n")
     return temperament_type
 
 def describe_temperament(resalts_extra_intro, temperament_type):
@@ -265,16 +265,16 @@ def describe_introversion_extroversion(resalts_extra_intro):
     """
     if resalts_extra_intro > 12:
         description_extra_intro = (
-            "The results also showed that you are an extroverted personality type. "
+            "\n The results also showed that you are an extroverted personality type. "
             "This characterizes you as friendly, talkative, and energetic.\n"
         )
     else:
         description_extra_intro = (
-            "The results also showed that you are an introverted personality type. "
+            "\n The results also showed that you are an introverted personality type. "
             "This manifests itself in more withdrawn and solitary behavior.\n"
         )
     
-    print(f"{description_extra_intro}")
+    print(description_extra_intro)
     return description_extra_intro
 
 
@@ -285,22 +285,22 @@ def describe_neuroticism(resalts_neuroticism):
     """
     if resalts_neuroticism <= 7:
         description_resalts_neuroticism = (
-            "You are usually characterized by stable and low-intensity emotional reactions. "
+            "\nYou are usually characterized by stable and low-intensity emotional reactions. "
             "You rarely experience extreme anxiety, nervousness, or depression and usually cope with stress better.\n"
         )
     elif 8 < resalts_neuroticism <= 13:
         description_resalts_neuroticism = (
-            "You usually have more stable emotional reactions. You may experience stress and anxiety, "
+            "\nYou usually have more stable emotional reactions. You may experience stress and anxiety, "
             "but not as much or as often as people with higher levels of neuroticism.\n"
         )
     elif 14 < resalts_neuroticism <= 18:
         description_resalts_neuroticism = (
-            "You tend to have emotional fluctuations and reactions to stress. You may experience anxiety, "
+            "\nYou tend to have emotional fluctuations and reactions to stress. You may experience anxiety, "
             "nervousness, and worry more often, but not as intensely as people with very high levels of neuroticism.\n"
         )
     else:
         description_resalts_neuroticism = (
-            "You often experience intense and frequent emotional reactions. You may be prone to excessive anxiety, "
+            "\nYou often experience intense and frequent emotional reactions. You may be prone to excessive anxiety, "
             "fears, depression, and feelings of restlessness. You can easily fall into states of nervousness and uncertainty.\n"
         )
     
@@ -342,9 +342,7 @@ def save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neurot
     worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
     worksheet.insert_rows(result_data, 2)
 
-# save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type)
-
-
+    
 def print_final_message(data_name):
     """
     Print a final message to the console.
@@ -357,10 +355,9 @@ def print_final_message(data_name):
 
 
 if __name__ == "__main__":
-    # menu()
     menu()
-    resalts_extra_intro, resalts_neuroticism, resalts_scale_lies = psychological_test(get_questions())
+    resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile = psychological_test(get_questions())
     description_temperament_type = describe_temperament(resalts_extra_intro, temperament_type)
-    save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type)
+    # save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type)
     
      
