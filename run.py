@@ -57,15 +57,11 @@ RESET = '\033[0m'
 
 
 
-def main():
-    menu()
-
-
 def menu():
     """
     Display a menu and prompt the user for their choice.
     """
-    data_name = info()
+    # data_name = info()
     while True:
         print("\nMenu:")
         print("1. Start the quiz")
@@ -122,13 +118,13 @@ def info():
         data_name = input(f"{BLUE}\nEnter your name:{RESET}\n")
         
         if data_name not in existing_sheets:
-            if validate_data(data_name):
-                 return data_name
+            if validate_data(data_name):            
+                break
         else:
             print(f"\n{RED}A user named '{data_name}' already exists in the database. Please choose a different name.{RESET}")
             continue
 
-    
+    psychological_test(get_questions())
 
 def validate_data(values):
     """
@@ -146,8 +142,9 @@ def validate_data(values):
     print(f"\n{YELLOW}Instructions:{RESET}\n")
     print(f"""  {GREEN}{values}{RESET}, you are asked to answer 57 questions. The questions are aimed at identifying your usual way of behavior. \
     Try to imagine typical situations and give the first “natural” answer that comes to mind. If you agree with the statement, indicate 'Yes', if not, indicate 'No'.\n""")
-        
+     
     return True   
+
 
 
 def get_questions():
@@ -156,6 +153,7 @@ def get_questions():
     """
     table_access = SHEET.worksheet('questions')
     questions = table_access.col_values(2)
+
     return questions
 
  
@@ -188,11 +186,16 @@ def psychological_test(questions):
             resalts_scale_lies += 1
         if idx in target_question_scale_lies_no and answer.lower() == 'n':
             resalts_scale_lies += 1
+    
+    
+    description_resalts_neuroticism = describe_neuroticism(resalts_neuroticism)
+    determine_temperament(resalts_extra_intro, resalts_neuroticism)
+    description_extra_intro = describe_introversion_extroversion(resalts_extra_intro)
+    description_scale_lies, sign_profile = check_honesty(resalts_scale_lies)
+    print_final_message(data_name)
 
     return resalts_extra_intro, resalts_neuroticism, resalts_scale_lies
-
-
-
+    
 
 def determine_temperament(resalts_extra_intro, resalts_neuroticism):
     """
@@ -207,10 +210,11 @@ def determine_temperament(resalts_extra_intro, resalts_neuroticism):
     elif resalts_extra_intro > 12 and resalts_neuroticism > 12:
         temperament_type = 'Choleric'
     
+    describe_temperament(resalts_extra_intro, temperament_type)
+    print(f"your predominant temperament type is {temperament_type}")
     return temperament_type
 
-
-def describe_temperament(temperament_type):
+def describe_temperament(resalts_extra_intro, temperament_type):
     """
     Describe the temperament type based on the result.
     """
@@ -248,6 +252,8 @@ def describe_temperament(temperament_type):
     else:
         description_temperament_type = "Invalid temperament type"
     
+    describe_introversion_extroversion(resalts_extra_intro)
+    print(description_temperament_type)
     return description_temperament_type
 
 
@@ -268,6 +274,7 @@ def describe_introversion_extroversion(resalts_extra_intro):
             "This manifests itself in more withdrawn and solitary behavior.\n"
         )
     
+    print(f"{description_extra_intro}")
     return description_extra_intro
 
 
@@ -297,6 +304,8 @@ def describe_neuroticism(resalts_neuroticism):
             "fears, depression, and feelings of restlessness. You can easily fall into states of nervousness and uncertainty.\n"
         )
     
+
+    print(description_resalts_neuroticism)
     return description_resalts_neuroticism
 
 
@@ -308,16 +317,16 @@ def check_honesty(resalts_scale_lies):
     if resalts_scale_lies >= 5:
         description_scale_lies = (
             f"{RED}Important! {data_name}, you answered not as you really are, "
-            "but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
+            f"but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n"
         )
         sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
     else:
         description_scale_lies = ""
         sign_profile = "The subject was honest and the test results are reliable."
     
+    
+    print(description_scale_lies)
     return description_scale_lies, sign_profile
-
- 
 
 
 def save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type):
@@ -348,13 +357,10 @@ def print_final_message(data_name):
 
 
 if __name__ == "__main__":
-    main()
-    data_name = info() 
+    # menu()
+    menu()
     resalts_extra_intro, resalts_neuroticism, resalts_scale_lies = psychological_test(get_questions())
-    temperament_type = determine_temperament(resalts_extra_intro, resalts_neuroticism)
-    description_extra_intro = describe_introversion_extroversion(resalts_extra_intro)
-    description_resalts_neuroticism = describe_neuroticism(resalts_neuroticism)
-    description_temperament_type = describe_temperament(temperament_type)
-    description_scale_lies, sign_profile = check_honesty(resalts_scale_lies)
+    description_temperament_type = describe_temperament(resalts_extra_intro, temperament_type)
     save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type)
-    print_final_message(data_name)
+    
+     
