@@ -54,7 +54,27 @@ for sign in art:
     print(sign, end='', flush=True)
     time.sleep(0.005)
 
-
+def menu():
+    """
+    Display a menu and prompt the user for their choice.
+    """
+    while True:
+        print("\nMenu:")
+        print("1. Start the quiz")
+        print("2. Check your previous score")
+        print("3. Quit")
+        
+        choice = input("Enter the number of your choice: ")
+        
+        if choice == "1":
+            info()
+        elif choice == "2":
+            check_previous_score()
+        elif choice == "3":
+            print("Thank you for participating in our test!")
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
 
 def info():
     """
