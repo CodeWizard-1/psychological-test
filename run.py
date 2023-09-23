@@ -3,7 +3,7 @@
 import gspread
 import time
 from google.oauth2.service_account import Credentials
-import pprint
+from pprint import pprint
 
 # Setting up credentials for the Google Sheets API using the service key
 # stored in 'creds.json'. The gspread library is used for integration with
@@ -94,9 +94,9 @@ def check_previous_score():
         rows = worksheet.get_all_values()
 
         if len(rows) > 0:
-            print(f"\n{GREEN}Your previous test results:{RESET}")
+            print(f"\n{GREEN}Your previous test results:{RESET}\n")
 
-            for row in rows:
+            for row in rows[2:]:
                 print(" ".join(row))
         else:
             print(f"\n{RED}No data found for '{data_name}'. Please check the name or take the test first.{RESET}")
@@ -337,8 +337,8 @@ def save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neurot
     Create a new sheet with the user's name and add test results to it.
     """
     result_data = [
-        ["Name", "Temperament Type", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points"],
-        [data_name, description_temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile]
+        ["Temperament Type", "Extra-Introversion Points", "Neuroticism Points", "Scale Lies Points"],
+        [description_temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile]
     ]
     
     worksheet = SHEET.add_worksheet(title=data_name, rows="100", cols="10")
@@ -358,7 +358,7 @@ def print_final_message(data_name):
 
 if __name__ == "__main__":
     menu()
-    resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile = psychological_test(get_questions())
+    # resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile = psychological_test(get_questions())
     description_temperament_type = describe_temperament(resalts_extra_intro, temperament_type)
     # save_results_to_google_sheets(data_name, resalts_extra_intro, resalts_neuroticism, resalts_scale_lies, temperament_type, description_extra_intro, description_resalts_neuroticism, sign_profile, description_temperament_type)
     
