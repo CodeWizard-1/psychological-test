@@ -94,10 +94,13 @@ def menu():
         elif choice == "2":
             check_previous_score()
         elif choice == "3":
-            print("\n Thank you for your time. You can take the test at any time convenient for you. See you again!!")
+            exit_masage = (f"{YELLOW}\n Thank you for your time. You can take the test at any time convenient for you. See you again!!{RESET}")
+            for letter in exit_masage:
+                print(letter, end='', flush=True)
+                time.sleep(0.05)
             break
         else:
-            print("Invalid choice. Please enter 1, 2, or 3.")
+            print(f"{RED}\nInvalid choice. Please enter 1, 2, or 3.{RESET}")
 
 
 def check_previous_score():
@@ -112,7 +115,7 @@ def check_previous_score():
         rows = worksheet.get_all_values()
 
         if len(rows) > 0:
-            print(f"\n{GREEN}Your previous test results:{RESET}\n")
+            print(f"\n{BLUE}Your previous test results:{RESET}\n")
 
             for row in rows[2:]:
                 print(" ".join(row))
