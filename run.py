@@ -62,7 +62,7 @@ def menu():
     Display a menu and prompt the user for their choice.
     """
     while True:
-        print("\nMenu:\n")
+        print(f"{BLUE}\nMenu:{RESET}\n")
         time.sleep(0.5) 
         for letter in "1. Start psychological testing":
             print(letter, end='', flush=True)
@@ -84,7 +84,7 @@ def menu():
         
         print()
         
-        choice = input("\nEnter the number of your choice: ")
+        choice = input(f"{BLUE}\nEnter the number of your choice: {RESET}")
         for letter in choice:
             print(letter, end='', flush=True)
             time.sleep(0.05)
@@ -128,7 +128,7 @@ def info():
     """
     Information about the purpose of psychological testing and instructions for taking the test
     """
-    welcome_text = f"\n{BLUE} Welcome to psychological testing.{RESET} By passing the temperament test, you will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n"
+    welcome_text = f"\n{BLUE} Welcome to psychological testing.{RESET} In this test you will find out your predominant temperament type. You may be Sanguine, Choleric, Phlegmatic or Melancholic. You will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n"
 
     for letter in welcome_text:
         print(letter, end='',flush=True)
@@ -154,6 +154,10 @@ def validate_data(values):
     This function checks that the user has entered their name correctly
     """
     try:
+        if not values.isalpha():
+            raise ValueError(
+                f"{RED}Invalid characters in your name. Please enter only letters.{RESET}"
+            )
         if len(values) < 3 or len(values) > 10:
             raise ValueError(
                 f"{RED}the length of your name should not be less than 3 characters and not exceed 10 characters. You entered: {len(values)} characters,{RESET}"
