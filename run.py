@@ -128,7 +128,7 @@ def info():
     """
     Information about the purpose of psychological testing and instructions for taking the test
     """
-    welcome_text = f"\n{BLUE} Welcome to psychological testing.{RESET} In this test you will find out your predominant temperament type. You may be Sanguine, Choleric, Phlegmatic or Melancholic. You will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n"
+    welcome_text = f"\n{BLUE}Welcome to psychological testing.{RESET} In this test you will find out your predominant temperament type. You may be Sanguine, Choleric, Phlegmatic or Melancholic. You will be able to better know your own Self. You will understand what your character is like and will be able to take a more correct position in life. Knowing the temperament of your loved ones and friends will help you get along comfortably in the family and in the work team.\n"
 
     for letter in welcome_text:
         print(letter, end='',flush=True)
@@ -179,7 +179,7 @@ def validate_data(values):
     for letter in description_instructions:
         print(letter, end='', flush=True)
         time.sleep(0.05)
-
+    
     return True   
 
 
@@ -253,7 +253,9 @@ def determine_temperament(resalts_extra_intro, resalts_neuroticism):
     for letter in intro_text:
         print(letter, end='', flush=True)
         time.sleep(0.05)
-        
+
+    print()    
+
     return temperament_type
 
 def describe_temperament(resalts_extra_intro, temperament_type):
@@ -287,11 +289,14 @@ def describe_temperament(resalts_extra_intro, temperament_type):
         description_temperament_type = "Invalid temperament type"
     
     describe_introversion_extroversion(resalts_extra_intro)
+
     text_description_temperament_type = description_temperament_type
     for letter in text_description_temperament_type:
         print(letter, end='', flush=True)
         time.sleep(0.05)
-    # print(description_temperament_type)
+    
+    print()
+
     return description_temperament_type
 
 
@@ -307,7 +312,7 @@ def describe_introversion_extroversion(resalts_extra_intro):
         description_extra_intro = (" The results also showed that you are an introverted personality type. "
         "This manifests itself in more withdrawn and solitary behavior.\n")
     
-    # print(description_extra_intro)
+    
     return description_extra_intro
 
 
@@ -331,8 +336,13 @@ def describe_neuroticism(resalts_neuroticism):
         description_resalts_neuroticism = (" You often experience intense and frequent emotional reactions. You may be prone to excessive anxiety, "
         "fears, depression, and feelings of restlessness. You can easily fall into states of nervousness and uncertainty.\n")
     
+    text_description_resalts_neuroticism = description_resalts_neuroticism
+    for letter in text_description_resalts_neuroticism:
+        print(letter, end='', flush=True)
+        time.sleep(0.05)
+   
+    print()
 
-    print(description_resalts_neuroticism)
     return description_resalts_neuroticism
 
 
@@ -342,7 +352,7 @@ def check_honesty(resalts_scale_lies):
     Check if the user's answers may not have been honest.
     """
     if resalts_scale_lies >= 5:
-        description_scale_lies = (f" {RED}Important!{GREEN} {data_name}{RESET}, you answered not as you really are, "
+        description_scale_lies = (f" {RED}Important!{RESET}{GREEN} {data_name}{RESET}, {RED}you answered not as you really are, "
         f"but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n")
         sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
     else:
@@ -350,7 +360,13 @@ def check_honesty(resalts_scale_lies):
         sign_profile = "The subject was honest and the test results are reliable."
     
     
-    print(description_scale_lies)
+    text_description_scale_lies = description_scale_lies
+    for letter in text_description_scale_lies:
+        print(letter, end='', flush=True)
+        time.sleep(0.05)
+    
+    print()
+
     return description_scale_lies, sign_profile
 
 
@@ -375,7 +391,7 @@ def print_final_message(data_name):
     "\n\nTo take the test again or view your results, select the desired item in the menu below: ")
     for letter in final_message:
         print(letter, end='', flush=True)
-        time.sleep(0.005)
+        time.sleep(0.05)
     print()
 
 
