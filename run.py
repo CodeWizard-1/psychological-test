@@ -94,7 +94,7 @@ def menu():
         elif choice == "2":
             check_previous_score()
         elif choice == "3":
-            exit_masage = (f"{YELLOW}\n Thank you for your time. You can take the test at any time convenient for you. See you again!!{RESET}")
+            exit_masage = (f"{YELLOW}\n Thank you for your time. You can take the test at any time convenient for you. See you again!!!{RESET}")
             for letter in exit_masage:
                 print(letter, end='', flush=True)
                 time.sleep(0.05)
@@ -352,7 +352,7 @@ def check_honesty(resalts_scale_lies):
     Check if the user's answers may not have been honest.
     """
     if resalts_scale_lies >= 5:
-        description_scale_lies = (f" {RED}Important!{RESET}{GREEN} {data_name}{RESET}, {RED}you answered not as you really are, "
+        description_scale_lies = (f" {RED}Important!{RESET}{GREEN} {data_name}{RESET}{RED}, you answered not as you really are, "
         f"but as you would like or as accepted in society. In other words, your answers are not reliable.{RESET}\n")
         sign_profile = "The test subject was not sufficiently honest, the test results are not reliable."
     else:
