@@ -210,9 +210,16 @@ def psychological_test(questions):
 
 
     for idx, question in enumerate (questions, start = 1):
-        answer = input(f"\n{BLUE}Question № {idx}{RESET} : {question} ({GREEN}Y/N){RESET}")
-        while answer.lower() not in ('y','n'):
-            answer = input(f"\n{RED}Please, enter 'Y or 'N'{RESET}")
+        while True:
+            answer = input(f"\n{BLUE}Question № {idx}{RESET} : {question} ({GREEN}Y/N){RESET}")
+            if  answer.lower() in ('y','n'):
+                break
+            else:
+                error_message = (f"\n{RED}Please, enter 'Y or 'N'{RESET}")
+                for letter in error_message:
+                    print(letter, end='', flush=True)
+                    time.sleep(0.05)
+                
         if idx in target_question_extra_intro_yes and answer.lower() == 'y':
             resalts_extra_intro += 1
         if idx in target_question_extra_intro_no and answer.lower() == 'n':
