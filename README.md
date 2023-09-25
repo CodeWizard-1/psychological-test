@@ -30,6 +30,12 @@
     * [Frameworks and Libraries used](#frameworks-and-libraries-used)
 * [Deployment and Local Development](#deployment-and-local-development)
 * [Testing](#testing)
+    * [Automated Testing](#automated-testing)
+    * [Manual Testing](#manual-testing)
+* [Bugs](#bugs)
+* [Credits](#credits)
+    * [Code Used and Referenced](#code-used-and-referenced)
+    * [Media](#media)
 
 
 
@@ -328,3 +334,54 @@ The following steps were followed to deploy the app to Heroku:
 
 # **Testing**
 
+## **Automated Testing**
+
+<br>
+
+### **PEP8 Validation:**
+
+<br>
+
+I passed my run.py file through the [Code Institute Python Linter](https://pep8ci.herokuapp.com/) and no errors are found:
+
+<br>
+
+![CI Python Linter Validation](image-31.png)
+
+<br>
+
+
+## **Manual Testing**
+
+<br>
+
+Follow this link to the [TESTING.md file](./TESTING.md) for documentation of the manual testing procedure I used for this project. .
+<br>
+
+## **Bugs**
+
+<br>
+
+**1.**
+
+
+# **Credits**
+
+## **Code Used and Referenced**
+
+<br>
+
+* The code for setting up the Google Sheets API so that an application can add and manipulate data stored in a Google Sheets document was adapted from the Code Institute [Love Sandwiches](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master).
+
+* Was also inspired by the projects [American Pizza Project](https://github.com/useriasminna/american_pizza_order_system) and [the-coffee-run](https://github.com/rkillickdev/the-coffee-run)
+
+<br>
+
+## **Media**
+
+<br>
+
+* [Psychology symbol favicon taken from here](https://svgsilh.com/ru/image/2146164.html)
+* [Background taken from here](https://oir.mobi/656128-psihologija-fon.html)
+
+<br>
