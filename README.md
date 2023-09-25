@@ -64,7 +64,7 @@ ___
 
 <br>
 
-* Allow the user to enter username information so that test results can be saved for that user as well.
+* Allow the user to enter their name so that test results can be saved for that user and those results can be viewed in the future.
 
 * Provide the user with information about the purpose of testing, as well as the possibilities of using the information received
 
@@ -104,14 +104,15 @@ ___
 
 <br>
 
-![Main Menu](image-17.png)
-
 When launching the app, users see a large Greek letter psi "Ψ". The words psyche, psychology, psychiatry begin with this letter, and therefore this letter has become part of the logo of almost all psychological organizations in the world.
 This letter was created using an ASCII image generator and asks the user to make a choice: take a psychological test, view the results of a previous test, or exit the program.
 
-![Alt text](image-18.png)
+![Main Menu](image-17.png)
+
 
 If the user chooses to take the test, a welcome message appears in front of him explaining the purpose of the test.
+
+![Alt text](image-18.png)
 
 ### **Instruction block**
 
@@ -120,7 +121,7 @@ Below the welcome message, the user is asked to enter their name:
 
 ![User Enter Name](image-2.png)
 
-To pass verification, the name entered must contain at least three characters, but more than 10 characters. If this verification test fails, the following message is displayed:
+To pass verification, the name entered must contain at least three characters and no more than 10 characters. If this verification test fails, the following message is displayed:
 
 ![Name Input  Enter Less Than 3 And More Than 10 Characters](image-1.png)
 
@@ -186,7 +187,7 @@ The data is stored in a Google Sheets document and the app accesses it through t
 
 <br>
 
-All questions that participate in testing are stored here. If necessary, you can update them:
+All questions that participate in testing are stored here. If necessary, questions can be updated:
 
 ![Questions Sheet](image-11.png)
 
@@ -203,7 +204,7 @@ When passing the test, a separate tab with the user name is formed in the Google
 ## **Error Handling**
 
 <br>
-As stated in the [Functionality and Features](#functionality-and-features) section, all user input is validated and any errors are handled gracefully so the user is kept aware of the problem and feedback is provided to help the user correct their error
+As stated in the "Functionality and Features" section, all user input is validated and any errors are handled gracefully so the user is kept aware of the problem and feedback is provided to help the user correct their error
 
 
 ## **Typography**
@@ -346,7 +347,7 @@ I passed my run.py file through the [Code Institute Python Linter](https://pep8c
 
 <br>
 
-![CI Python Linter Validation](image-31.png)
+![CI Python Linter Validation](image-33.png)
 
 <br>
 
@@ -373,7 +374,7 @@ Follow this link to the [TESTING.md file](./TESTING.md) for documentation of the
 
 * The code for setting up the Google Sheets API so that an application can add and manipulate data stored in a Google Sheets document was adapted from the Code Institute [Love Sandwiches](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master).
 
-* Was also inspired by the projects [American Pizza Project](https://github.com/useriasminna/american_pizza_order_system) and [the-coffee-run](https://github.com/rkillickdev/the-coffee-run)
+* Was also inspired by the projects [American Pizza Project](https://github.com/useriasminna/american_pizza_order_system) and [The Coffee Run App](https://github.com/rkillickdev/the-coffee-run)
 
 <br>
 
