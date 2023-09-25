@@ -1,7 +1,7 @@
 # **Psychological test**
 
 
-![Deployed Site View](docs/devices/coffee-run-deployed-mockup.png)
+![Deployed Site View](image-15.png)
 
 <br>
 
@@ -74,7 +74,7 @@ ___
 
 Functionality that is not in the scope of this project but may be added later to improve the user experience:
 
-* Ability for users to create an account in which they can store and see all test results
+* Ability for users to create an account with a password
 * Possibility for the user to send the results via the provided email
 
 <br>
@@ -98,11 +98,14 @@ ___
 
 <br>
 
-![Main Menu](image.png))
+![Main Menu](image-17.png)
 
-When starting the application, users see the large Greek letter psi "Ψ". The words psyche, psychology, psychiatry begin with this letter, and therefore this letter has become part of the logo of almost all psychological organizations in the world.
-  This letter was created using an ASCII art generator and lets the user know that a psychological test will be taken.
-A welcome message also appears in front of the user, informing about the purposes of testing, as well as the possibilities of applying the results obtained.
+When launching the app, users see a large Greek letter psi "Ψ". The words psyche, psychology, psychiatry begin with this letter, and therefore this letter has become part of the logo of almost all psychological organizations in the world.
+This letter was created using an ASCII image generator and asks the user to make a choice: take a psychological test, view the results of a previous test, or exit the program.
+
+![Alt text](image-18.png)
+
+If the user chooses to take the test, a welcome message appears in front of him explaining the purpose of the test.
 
 ### **Instruction block**
 
@@ -114,6 +117,10 @@ Below the welcome message, the user is asked to enter their name:
 To pass verification, the name entered must contain at least three characters, but more than 10 characters. If this verification test fails, the following message is displayed:
 
 ![Name Input  Enter Less Than 3 And More Than 10 Characters](image-1.png)
+
+If the user enters numbers, he will also be shown a message that he can only enter letters
+
+![Alt text](image-19.png)
 
 If the entered name is already in the Google spreadsheet, the application will prompt you to enter a new unique name:
 
@@ -129,21 +136,41 @@ The next step is to show test questions where the user needs to answer “Yes”
 
 This is followed by checking the user's answer and if he answers other than "Y" or "N" then the following message appears:
 
-![Checking Correctness Entered Answer](image-7.png)
+![Checking Correctness Entered Answer](image-20.png)
 
 After answering all questions, test results appear:
 
-![Test Results](image-8.png)
+![Test Results](image-21.png)
 
 If the user was not honest enough when answering, then the psychological test will reveal this and the program will show about this message. In this case, the test results are considered invalid:
 
-![Results Not Valid](image-9.png)
+![Results Not Valid](image-22.png)
 
 Also, when testing is completed, a message appears indicating that testing is completed:
 
 ![Testing Сompleted](image-10.png)
 
+Next, the user is prompted to take the test again or view the test results
+
+![Alt text](image-23.png)
+
+And the menu appears in front of the user again:
+
+![Alt text](image-25.png)
+
+If the user wants to see the results of previous testing, he enters the number 2 and is prompted to enter his name. If the user has entered their name incorrectly, an error message will appear:
+
+![Alt text](image-26.png)
 <br>
+
+If the user entered his name correctly, the test results will appear:
+
+![Alt text](image-27.png)
+
+After the test results, a menu appears again where you can select “Exit the program” and the final message appears:
+
+![Alt text](image-28.png)
+
 
 ## **Database**
 
@@ -164,7 +191,7 @@ All questions that participate in testing are stored here. If necessary, you can
 
 When passing the test, a separate tab with the user name is formed in the Google spreadsheet, and all information about the test results is also recorded here. This new data tab is created for each new user:
 
-![User Page](image-12.png)
+![User Page](image-29.png)
 
 
 ## **Error Handling**
@@ -185,7 +212,7 @@ Consistent color schemes were used throughout the application to provide an intu
 
 This project is deployed on Heroku and uses the Code Institute template to run the application in a mock terminal. I made some changes to the default html and css files to personalize the application and also to help the user immediately understand the purpose of the site: 
 
-![Deployed Site Landing Page](image-13.png)
+![Deployed Site Landing Page](image-30.png)
 
 The following background image has been added to the css class 'body' in the layout.html file:
 
