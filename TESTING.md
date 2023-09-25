@@ -33,7 +33,7 @@ The following steps were taken to test the functionality of the application's fe
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |
 |         |
-| Validation for user input: **Enter the number of your choice:** | Input validated, call assemble_order function, user input prompt for name displayed | Input "1" | Pass |
+| Validation for user input: **Enter the number of your choice:** | Input validated  user input prompt for name displayed | Input "1" | Pass |
 
 <br>
 
