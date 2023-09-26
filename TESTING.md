@@ -111,3 +111,16 @@ The following steps were taken to test the functionality of the application's fe
 | Validation for user input: **Enter your name to get your previos results:** | If such a name is in the Google table, then information with the results of its testing is displayed to the user. | Attempt input of "John" | Pass |
 
 ![Alt text](./documentation/image-54.png)
+
+<br>
+
+**Exit the program**
+
+<br>
+
+| Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
+| ------- | ---------------- | ----------------- | --------- |
+|         |
+| Validation for user input: **Exit the program** | With this choice, the program ends its work.| Attempt input of "3" | Pass |
+
+![Alt text](./documentation/image-55.png)
