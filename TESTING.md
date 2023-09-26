@@ -35,6 +35,8 @@ The following steps were taken to test the functionality of the application's fe
 |         |
 | Validation for user input: **Enter the number of your choice:** | Input validated  user input prompt for name displayed | Input "1" | Pass |
 
+
+![Alt text](./documentation/image-50.png)
 <br>
 
 **User Name**
@@ -58,6 +60,13 @@ The following steps were taken to test the functionality of the application's fe
 ![User Name Input Validation](./documentation/image-38.png)
 
 
+| Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
+| ------- | ---------------- | ----------------- | --------- |
+|         |
+| Validation for user input: **Enter you name:** | If the name is entered correctly, the program continues its work and displays instructions for testing| Attempt input of "John" | Pass |
+
+![Alt text](./documentation/image-51.png)
+
 <br>
 
 **Answers on questions**
@@ -73,11 +82,21 @@ The following steps were taken to test the functionality of the application's fe
 
 ![Wrong answer](./documentation/image-40.png)
 
+
+| Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
+| ------- | ---------------- | ----------------- | --------- |
+|         |
+| Validation for user input: **(Y/N)** | After entering the answer “Yes” or “No” to all questions, the test results appear. | Input of "Y" or "N"| Pass |
+
+![Alt text](./documentation/image-52.png)
+
+
 <br>
 
 **View previous test results**
 
 <br>
+![Alt text](./documentation/image-53.png)
 
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |
@@ -85,3 +104,10 @@ The following steps were taken to test the functionality of the application's fe
 | Validation for user input: **Enter your name to get your previos results:** | If such a name is not in the Google table, then the error is processed and a feedback message is displayed to the user. | Attempt input of "qwe" | Pass |
 
 ![Alt text](./documentation/image-41.png)
+
+| Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
+| ------- | ---------------- | ----------------- | --------- |
+|         |
+| Validation for user input: **Enter your name to get your previos results:** | If such a name is in the Google table, then information with the results of its testing is displayed to the user. | Attempt input of "John" | Pass |
+
+![Alt text](./documentation/image-54.png)
