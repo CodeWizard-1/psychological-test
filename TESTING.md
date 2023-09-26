@@ -19,7 +19,7 @@ The following steps were taken to test the functionality of the application's fe
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |
 |         |
-| Load App | Title, main menu and user input displayed | Click the 'Run Program' button on the landing page of the deployed app | Pass |
+| Load App | The main menu is displayed and the user is prompted to make a choice. | Click the "Run Program" button on the landing page of the deployed application. | Pass |
 
 ![App Loaded](./documentation/image-32.png)
 
@@ -73,8 +73,11 @@ The following steps were taken to test the functionality of the application's fe
 
 ![Wrong answer](./documentation/image-40.png)
 
+<br>
 
 **View previous test results**
+
+<br>
 
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |

@@ -179,7 +179,7 @@ def validate_data(values):
         if not values.isalpha():
             raise ValueError(
                 f"{RED}Invalid characters in your name. \
-Please enter only letters.{RESET}"
+Please enter only letters {RESET}"
             )
         if len(values) < 3 or len(values) > 10:
             raise ValueError(

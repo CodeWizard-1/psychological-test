@@ -252,7 +252,7 @@ Python was used to create this project.
 * [LucidChart](https://www.lucidchart.com/pages/) -For creating a flow diagram
 * [Heroku](https://dashboard.heroku.com/apps) - For deployment of the project.
 * [PEP8](https://pep8ci.herokuapp.com/) CI Python Linter
-* [Cloudconvert](https://cloudconvert.com/jpg-to-webp) - For compression of image files to improve website performance.
+* [Cloudconvert](https://cloudconvert.com/) - For compression of image files to improve website performance.
 * [UiDev](https://ui.dev/amiresponsive) - For generating an image of the deployed app on devices 
 
 <br>
@@ -363,14 +363,15 @@ Follow this link to the [TESTING.md file](./TESTING.md) for documentation of the
 
 <br>
 
-**1**
+**1.**
+
 Issue: the user was able to enter numbers instead of letters when entering their name. This may lead to errors in user identification and other undesirable consequences.
 
 <br>
 
 Solution: the problem was successfully resolved using alphabetic character checks using isalpha() is a boolean function. This check has been implemented into the system during user name entry to ensure that the "Enter your name:" field contains only alphabetic characters. When the user tries to enter numbers or other characters, the system immediately detects the error and provides a description.
 
-**2**
+**2.**
 
 Issue:: If you answer a question incorrectly, an error message is displayed, but the question is not repeated.
 
@@ -379,6 +380,7 @@ Issue:: If you answer a question incorrectly, an error message is displayed, but
 
 Solution: to solve this problem, the code included a loop that continues until the user receives the appropriate answer to the question. With this modification code, it is necessary to ask the same question until the user requires the appropriate answer (“Yes” or “No”). If the user gives an incorrect answer, they will see a message about Nurgals and will be asked to answer the question again.
 
+![Alt text](./documentation/image.png)
 
 # **Credits**
 
@@ -390,7 +392,7 @@ Solution: to solve this problem, the code included a loop that continues until t
 
 * Was also inspired by the projects [American Pizza Project](https://github.com/useriasminna/american_pizza_order_system) and [The Coffee Run App](https://github.com/rkillickdev/the-coffee-run).
 
-* Also, in preparing this project, a lot of useful information was obtained from this [reference book](https://www.w3schools.com/python/default).
+* Also, in preparing this project, a lot of useful information was obtained from this [reference book](https://www.w3schools.com/python/).
 
 <br>
 
