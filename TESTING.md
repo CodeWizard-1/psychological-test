@@ -96,6 +96,7 @@ The following steps were taken to test the functionality of the application's fe
 **View previous test results**
 
 <br>
+
 ![Alt text](./documentation/image-53.png)
 
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |

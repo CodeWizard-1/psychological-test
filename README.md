@@ -373,12 +373,12 @@ Solution: the problem was successfully resolved using alphabetic character check
 
 **2.**
 
-Issue:: If you answer a question incorrectly, an error message is displayed, but the question is not repeated.
+Issue:: if you answer a question incorrectly, an error message is displayed, but the question is not repeated.
 
 ![Bug 2](./documentation/bug2-img.png)
 <br>
 
-Solution: to solve this problem, the code included a loop that continues until the user receives the appropriate answer to the question. With this modification code, it is necessary to ask the same question until the user requires the appropriate answer (“Yes” or “No”). If the user gives an incorrect answer, they will see a message about Nurgals and will be asked to answer the question again.
+Solution: the code includes a loop that continues until the application receives the appropriate answer to the question ("Yes" or "No"). If the user answers incorrectly, they will see an error message and be prompted to answer the question again..
 
 ![Alt text](./documentation/image.png)
 
