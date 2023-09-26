@@ -400,7 +400,7 @@ Solution: the code includes a loop that continues until the application receives
 
 <br>
 
+* The psychological test that was used in this application was developed by the great English psychologist Hans Eysenck. More detailed information about this psychological test can be found [here](https://en.wikipedia.org/wiki/Hans_Eysenck).
 * [Psychology symbol favicon taken from here](https://svgsilh.com/ru/image/2146164.html)
 * [Background taken from here](https://oir.mobi/656128-psihologija-fon.html)
-
 <br>
