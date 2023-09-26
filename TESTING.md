@@ -21,14 +21,14 @@ The following steps were taken to test the functionality of the application's fe
 |         |
 | Load App | Title, main menu and user input displayed | Click the 'Run Program' button on the landing page of the deployed app | Pass |
 
-![App Loaded](image-32.png)
+![App Loaded](./documentation/image-32.png)
 
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |
 |         |
 | Validation for user input: **Enter the number of your choice:** | Error handled and feedback message displayed to user | Attempt input of "q" "empty" "4" | Pass |
 
-![Main Menu User Input Validation](image-35.png)
+![Main Menu User Input Validation](./documentation/image-35.png)
 
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |
@@ -41,21 +41,21 @@ The following steps were taken to test the functionality of the application's fe
 
 <br>
 
-![User Name Input](image-36.png)
+![User Name Input](./documentation/image-36.png)
 
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |
 |         |
 | Validation for user input: **Enter you name:** | Error handled and feedback message displayed to user | Attempt input of "123" "!!!" "empty" | Pass |
 
-![User Name Input Validation](image-37.png)
+![User Name Input Validation](./documentation/image-37.png)
 
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |
 |         |
 | Validation for user input: **Enter you name:** | Error handled and feedback message displayed to user | Attempt input of "w" "qwertyuiopas" | Pass |
 
-![User Name Input Validation](image-38.png)
+![User Name Input Validation](./documentation/image-38.png)
 
 
 <br>
@@ -64,14 +64,14 @@ The following steps were taken to test the functionality of the application's fe
 
 <br>
 
-![Answers on questions](image-39.png)
+![Answers on questions](./documentation/image-39.png)
 
 | Functionality Tested | Expected Outcome | Testing Performed | Pass/Fail |
 | ------- | ---------------- | ----------------- | --------- |
 |         |
 | Validation for user input: **(Y/N)** | Entering a Yes or No answer | Input of "T""empty"| Pass |
 
-![Wrong answer](image-40.png)
+![Wrong answer](./documentation/image-40.png)
 
 
 **View previous test results**
@@ -81,4 +81,4 @@ The following steps were taken to test the functionality of the application's fe
 |         |
 | Validation for user input: **Enter your name to get your previos results:** | If such a name is not in the Google table, then the error is processed and a feedback message is displayed to the user. | Attempt input of "qwe" | Pass |
 
-![Alt text](image-41.png)
+![Alt text](./documentation/image-41.png)

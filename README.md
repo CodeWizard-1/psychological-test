@@ -1,7 +1,7 @@
 # **Psychological test**
 
 
-![Deployed Site View](image-15.png)
+![Deployed Site View](./documentation/image-15.png)
 
 <br>
 
@@ -94,7 +94,7 @@ ___
 
 <br>
 
-![Flow Chart displaying stages and logic of the program](documentation/flow-charts-psychological-test-logic.png)
+![Flow Chart displaying stages and logic of the program](./documentation/flow-charts-psychological-test-logic.png)
 
 ## **Functionality and Features**
 
@@ -107,76 +107,76 @@ ___
 When launching the app, users see a large Greek letter psi "Ψ". The words psyche, psychology, psychiatry begin with this letter, and therefore this letter has become part of the logo of almost all psychological organizations in the world.
 This letter was created using an ASCII image generator and asks the user to make a choice: take a psychological test, view the results of a previous test, or exit the program.
 
-![Main Menu](image-17.png)
+![Main Menu](./documentation/image-17.png)
 
 
 If the user chooses to take the test, a welcome message appears in front of him explaining the purpose of the test.
 
-![Alt text](image-18.png)
+![Alt text](./documentation/image-18.png)
 
 ### **Instruction block**
 
 <br>
 Below the welcome message, the user is asked to enter their name:
 
-![User Enter Name](image-2.png)
+![User Enter Name](./documentation/image-2.png)
 
 To pass verification, the name entered must contain at least three characters and no more than 10 characters. If this verification test fails, the following message is displayed:
 
-![Name Input  Enter Less Than 3 And More Than 10 Characters](image-1.png)
+![Name Input  Enter Less Than 3 And More Than 10 Characters](./documentation/image-1.png)
 
 If the user enters numbers, he will also be shown a message that he can only enter letters
 
-![Alt text](image-19.png)
+![Alt text](./documentation/image-19.png)
 
 If the entered name is already in the Google spreadsheet, the application will prompt you to enter a new unique name:
 
-![Selecting Name If There Repetition In Database](image-3.png)
+![Selecting Name If There Repetition In Database](./documentation/image-3.png)
 
 After specifying a valid name, the user will be shown instructions for taking a psychological test:
 
-![Instructions](image-4.png)
+![Instructions](./documentation/image-4.png)
 
 The next step is to show test questions where the user needs to answer “Yes” or “No”:
 
-![Questions](image-5.png)
+![Questions](./documentation/image-5.png)
 
 This is followed by checking the user's answer and if he answers other than "Y" or "N" then the following message appears:
 
-![Checking Correctness Entered Answer](image-20.png)
+![Checking Correctness Entered Answer](./documentation/image-20.png)
 
 After answering all questions, test results appear:
 
-![Test Results](image-21.png)
+![Test Results](./documentation/image-21.png)
 
 If the user was not honest enough when answering, then the psychological test will reveal this and the program will show about this message. In this case, the test results are considered invalid:
 
-![Results Not Valid](image-22.png)
+![Results Not Valid](./documentation/image-22.png)
 
 Also, when testing is completed, a message appears indicating that testing is completed:
 
-![Testing Сompleted](image-10.png)
+![Testing Сompleted](./documentation/image-10.png)
 
 Next, the user is prompted to take the test again or view the test results
 
-![Alt text](image-23.png)
+![Alt text](./documentation/image-23.png)
 
 And the menu appears in front of the user again:
 
-![Alt text](image-25.png)
+![Alt text](./documentation/image-25.png)
 
 If the user wants to see the results of previous testing, he enters the number 2 and is prompted to enter his name. If the user has entered their name incorrectly, an error message will appear:
 
-![Alt text](image-26.png)
+![Alt text](./documentation/image-26.png)
 <br>
 
 If the user entered his name correctly, the test results will appear:
 
-![Alt text](image-27.png)
+![Alt text](./documentation/image-27.png)
 
 After the test results, a menu appears again where you can select “Exit the program” and the final message appears:
 
-![Alt text](image-28.png)
+![Alt text](./documentation/image-28.png)
 
 
 ## **Database**
@@ -189,7 +189,7 @@ The data is stored in a Google Sheets document and the app accesses it through t
 
 All questions that participate in testing are stored here. If necessary, questions can be updated:
 
-![Questions Sheet](image-11.png)
+![Questions Sheet](./documentation/image-11.png)
 
 
 ### **User Page**
@@ -198,7 +198,7 @@ All questions that participate in testing are stored here. If necessary, questio
 
 When passing the test, a separate tab with the user name is formed in the Google spreadsheet, and all information about the test results is also recorded here. This new data tab is created for each new user:
 
-![User Page](image-29.png)
+![User Page](./documentation/image-29.png)
 
 
 ## **Error Handling**
@@ -219,16 +219,16 @@ Consistent color schemes were used throughout the application to provide an intu
 
 This project is deployed on Heroku and uses the Code Institute template to run the application in a mock terminal. I made some changes to the default html and css files to personalize the application and also to help the user immediately understand the purpose of the site: 
 
-![Deployed Site Landing Page](image-30.png)
+![Deployed Site Landing Page](./documentation/image-30.png)
 
 The following background image has been added to the css class 'body' in the layout.html file:
 
-![Deployed Site Background Image](assets/img/psychology-background.webp)
+![Deployed Site Background Image](./assets/img/psychology-background.webp)
 
 
 I also added the following icon to the head element of the layout.html file:
 
-![Favicon Image](image-14.png)
+![Favicon Image](./documentation/image-14.png)
 
 <br>
 
@@ -347,7 +347,7 @@ I passed my run.py file through the [Code Institute Python Linter](https://pep8c
 
 <br>
 
-![CI Python Linter Validation](image-33.png)
+![CI Python Linter Validation](./documentation/image-33.png)
 
 <br>
 
@@ -356,14 +356,28 @@ I passed my run.py file through the [Code Institute Python Linter](https://pep8c
 
 <br>
 
-Follow this link to the [TESTING.md file](./TESTING.md) for documentation of the manual testing procedure I used for this project. .
+Follow this link to the [TESTING.md file](./TESTING.md) for documentation of the manual testing procedure I used for this project.
 <br>
 
 ## **Bugs**
 
 <br>
 
-**1.**
+**1**
+Issue: the user was able to enter numbers instead of letters when entering their name. This may lead to errors in user identification and other undesirable consequences.
+
+<br>
+
+Solution: the problem was successfully resolved using alphabetic character checks using isalpha() is a boolean function. This check has been implemented into the system during user name entry to ensure that the "Enter your name:" field contains only alphabetic characters. When the user tries to enter numbers or other characters, the system immediately detects the error and provides a description.
+
+**2**
+
+Issue:: If you answer a question incorrectly, an error message is displayed, but the question is not repeated.
+
+![Bug 2](./documentation/bug2-img.png)
+<br>
+
+Solution: to solve this problem, the code included a loop that continues until the user receives the appropriate answer to the question. With this modification code, it is necessary to ask the same question until the user requires the appropriate answer (“Yes” or “No”). If the user gives an incorrect answer, they will see a message about Nurgals and will be asked to answer the question again.
 
 
 # **Credits**
@@ -374,7 +388,9 @@ Follow this link to the [TESTING.md file](./TESTING.md) for documentation of the
 
 * The code for setting up the Google Sheets API so that an application can add and manipulate data stored in a Google Sheets document was adapted from the Code Institute [Love Sandwiches](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master).
 
-* Was also inspired by the projects [American Pizza Project](https://github.com/useriasminna/american_pizza_order_system) and [The Coffee Run App](https://github.com/rkillickdev/the-coffee-run)
+* Was also inspired by the projects [American Pizza Project](https://github.com/useriasminna/american_pizza_order_system) and [The Coffee Run App](https://github.com/rkillickdev/the-coffee-run).
+
+* Also, in preparing this project, a lot of useful information was obtained from this [reference book](https://www.w3schools.com/python/default).
 
 <br>
 
